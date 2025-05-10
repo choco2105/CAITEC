@@ -1,0 +1,40 @@
+/* navbar.css - Estilos para el componente Navbar */
+
+.desktop-nav {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .desktop-nav a {
+    color: var(--blanco);
+    font-family: var(--montserrat);
+    font-weight: 500;
+    font-size: 16px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .desktop-nav a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--azul-tecnologico);
+    transition: width 0.3s ease;
+  }
+  
+  .desktop-nav a:hover {
+    color: var(--azul-tecnologico);
+  }
+  
+  .desktop-nav a:hover:after {
+    width: 100%;
+  }
+  
+  @media (max-width: 767px) {
+    .desktop-nav {
+      display: none;
+    }
+  }

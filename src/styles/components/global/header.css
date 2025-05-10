@@ -1,0 +1,479 @@
+/* Estilos para el encabezado con megamenú */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 10vh;
+    z-index: 9999;
+    transition: all 0.3s ease-in-out;
+    background-color: rgba(38, 50, 56, 0.1);
+    backdrop-filter: blur(5px);
+  }
+  
+  header.scrolled {
+    background-color: rgba(38, 50, 56, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  header .container {
+    width: 100%;
+  }
+  
+  header .container .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Logo */
+  header .container .content .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  header .container .content .logo img {
+    width: 32px;
+    height: 32px;
+  }
+  
+  header .container .content .logo a {
+    font-weight: 800;
+    font-size: 1.4rem;
+    text-decoration: none;
+    font-family: var(--montserrat);
+    color: var(--blanco);
+    letter-spacing: 1px;
+  }
+  
+  /* Navegación principal */
+  header .container .content nav {
+    display: none;
+    align-items: center;
+    gap: 1rem;
+    padding: 10px 20px;
+    border-radius: 50px;
+    background: rgba(38, 50, 56, 0.3);
+    border: 1px solid rgba(236, 239, 241, 0.1);
+    backdrop-filter: blur(5px);
+  }
+  
+  header .container .content nav > a {
+    color: var(--gris-claro);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 32px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: 0.2s linear;
+  }
+  
+  header .container .content nav > a:hover {
+    background: rgba(2, 136, 209, 0.1);
+    color: var(--blanco);
+  }
+  
+  /* Megamenú contenedor */
+  .megamenu-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Trigger del megamenú */
+  .megamenu-trigger {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--gris-claro);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 32px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: 0.2s linear;
+    cursor: pointer;
+  }
+  
+  .megamenu-trigger:hover {
+    background: rgba(2, 136, 209, 0.1);
+    color: var(--blanco);
+  }
+  
+  .megamenu-trigger i {
+    font-size: 16px;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Megamenú desplegable */
+  .megamenu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 600px;
+    background: rgba(38, 50, 56, 0.95);
+    border: 1px solid var(--gris-oscuro);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    padding: 25px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    pointer-events: none;
+    z-index: 100;
+  }
+  
+  /* Área de "buffer" para evitar que el menú se cierre al mover el mouse */
+  .megamenu:before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+  }
+  
+  .megamenu.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+  }
+  
+  /* Triángulo decorativo */
+  .megamenu:after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    background: rgba(38, 50, 56, 0.95);
+    border-left: 1px solid var(--gris-oscuro);
+    border-top: 1px solid var(--gris-oscuro);
+  }
+  
+  /* Estructura del grid dentro del megamenú */
+  .megamenu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  /* Columnas dentro del megamenú */
+  .megamenu-column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .megamenu-column h3 {
+    color: var(--azul-tecnologico);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--gris-oscuro);
+    font-family: var(--montserrat);
+  }
+  
+  .megamenu-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .megamenu-column ul li a {
+    color: var(--gris-claro);
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 8px 0;
+    display: block;
+    transition: all 0.2s ease;
+    border-radius: 0 !important;
+    border-left: 2px solid transparent;
+    padding-left: 8px !important;
+  }
+  
+  .megamenu-column ul li a:hover {
+    color: var(--blanco);
+    border-left: 2px solid var(--azul-tecnologico);
+    background: transparent !important;
+    padding-left: 12px !important;
+  }
+  
+  /* Botón de CTA */
+  header .container .content .extra-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  header .container .content .extra-nav .cta-button {
+    display: none;
+    background-color: var(--azul-tecnologico);
+    color: white;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    letter-spacing: 1px;
+  }
+  
+  header .container .content .extra-nav .cta-button:hover {
+    background-color: #026CA4;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(2, 136, 209, 0.3);
+  }
+  
+  /* Botón de menú móvil */
+  header .container .content .extra-nav .btn-menu {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    color: var(--blanco);
+  }
+  
+  header .container .content .extra-nav .btn-menu .icon {
+    font-size: 25px;
+  }
+  
+  /* Navegación móvil */
+  header .container .content .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    width: 100%;
+    height: 100vh;
+    background: var(--negro);
+    transition: transform 0.3s ease-in-out;
+    z-index: 9999;
+    overflow-y: auto;
+    padding-top: 60px;
+  }
+  
+  header .container .content .mobile-nav.active {
+    transform: translateX(0);
+  }
+  
+  header .container .content .mobile-nav .close-mobile-nav {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    color: var(--blanco);
+  }
+  
+  header .container .content .mobile-nav .close-mobile-nav .icon {
+    font-size: 30px;
+  }
+  
+  header .container .content .mobile-nav .nav {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+  
+  header .container .content .mobile-nav .nav > a {
+    color: var(--blanco);
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Acordeón para móvil */
+  .mobile-accordion {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .mobile-accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    cursor: pointer;
+  }
+  
+  .mobile-accordion-header span {
+    color: var(--blanco);
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  
+  .mobile-accordion-header i {
+    color: var(--blanco);
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .mobile-accordion-header i.rotate {
+    transform: rotate(180deg);
+  }
+  
+  .mobile-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding-left: 15px;
+  }
+  
+  .mobile-accordion-content.active {
+    max-height: 1000px;
+    padding-bottom: 15px;
+  }
+  
+  .mobile-accordion-content h4 {
+    color: var(--azul-tecnologico);
+    margin: 15px 0 10px;
+    font-size: 1rem;
+    font-family: var(--montserrat);
+  }
+  
+  .mobile-accordion-content a {
+    color: var(--gris-claro);
+    text-decoration: none;
+    display: block;
+    padding: 8px 0;
+    font-size: 1rem;
+  }
+  
+  .mobile-accordion-content a:hover {
+    color: var(--blanco);
+  }
+  
+  .mobile-cta-btn {
+    display: inline-block;
+    background-color: var(--azul-tecnologico);
+    color: white !important;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 15px 24px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 30px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    letter-spacing: 1px;
+  }
+  
+  .mobile-cta-btn:hover {
+    background-color: #026CA4;
+    transform: translateY(-2px);
+  }
+  
+  /* Media Queries */
+  @media (min-width: 768px) {
+    header .container .content .extra-nav .btn-menu {
+      display: none;
+    }
+  
+    header .container .content nav {
+      display: flex;
+    }
+  
+    header .container .content .extra-nav .cta-button {
+      display: block;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    header .container .content .logo img {
+      width: 36px;
+      height: 36px;
+    }
+  
+    header .container .content .logo a {
+      font-size: 1.5rem;
+    }
+  
+    header .container .content nav a,
+    header .container .content nav .megamenu-trigger {
+      font-size: 1rem;
+    }
+  
+    header .container .content .extra-nav .cta-button {
+      padding: 12px 30px;
+      font-size: 0.9rem;
+    }
+  
+    header .container .content .mobile-nav {
+      display: none;
+    }
+    
+    .megamenu-column ul li a {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    header .container .content nav a,
+    header .container .content nav .megamenu-trigger {
+      padding: 8px 12px;
+    }
+  
+    header .container .content .extra-nav .cta-button {
+      padding: 12px 28px;
+      font-size: 0.9rem;
+    }
+    
+    .megamenu-column h3 {
+      font-size: 1.1rem;
+    }
+    
+    .megamenu-column ul li a {
+      font-size: 0.95rem;
+    }
+  }
+  
+  @media (min-width: 1536px) {
+    header .container .content .logo img {
+      width: 40px;
+      height: 40px;
+    }
+    
+    header .container .content .logo a {
+      font-size: 1.6rem;
+    }
+    
+    header .container .content nav a,
+    header .container .content nav .megamenu-trigger {
+      font-size: 1.1rem;
+    }
+    
+    header .container .content .extra-nav .cta-button {
+      padding: 14px 32px;
+      font-size: 1rem;
+    }
+    
+    .megamenu-column h3 {
+      font-size: 1.2rem;
+    }
+    
+    .megamenu-column ul li a {
+      font-size: 1rem;
+    }
+  }

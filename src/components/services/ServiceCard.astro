@@ -1,0 +1,33 @@
+---
+// ServiceCard.astro - Tarjeta individual para servicios
+interface Props {
+  service: {
+    id: string;
+    title: string;
+    description: string;
+    icon: string;
+    features: string[];
+  };
+  delay?: number;
+}
+
+const { service, delay = 0 } = Astro.props;
+---
+
+<div class="service-card" data-aos="fade-up" data-aos-delay={delay}>
+  <div class="service-icon">
+    <i class={`bx bx-${service.icon}`}></i>
+  </div>
+  
+  <h3>{service.title}</h3>
+  
+  <p>{service.description}</p>
+  
+  <ul class="service-features">
+    {service.features.map(feature => (
+      <li><i class='bx bx-check'></i> {feature}</li>
+    ))}
+  </ul>
+  
+  <a href={`/servicios/${service.id}`} class="service-link">Ver más <i class='bx bx-right-arrow-alt'></i></a>
+</div>

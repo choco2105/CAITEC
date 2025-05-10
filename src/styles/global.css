@@ -1,0 +1,187 @@
+/* Variables globales y estilos básicos */
+:root {
+    --azul-tecnologico: #0288D1;
+    --cian-innovacion: #00BCD4;
+    --verde-sostenible: #26A69A;
+    --turquesa-digital: #4DB6AC;
+    --gris-claro: #ECEFF1;
+    --gris-oscuro: #37474F;
+    --negro: #263238;
+    --blanco: #FFFFFF;
+    --montserrat: "Montserrat", sans-serif;
+    --roboto: "Roboto", sans-serif;
+  }
+  
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--azul-tecnologico);
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: var(--negro);
+    color: var(--blanco);
+    font-family: var(--roboto);
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  ul, ol {
+    list-style: none;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 1400px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+  
+  /* Botón para subir al inicio */
+  .to-top {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    padding: 10px;
+    border: 2px solid var(--azul-tecnologico);
+    border-radius: 50%;
+    color: var(--azul-tecnologico);
+    transform: scale(0);
+    z-index: 99;
+    transition: all 0.2s linear;
+  }
+  
+  .to-top:hover {
+    background-color: var(--azul-tecnologico);
+    color: var(--blanco);
+    transition: all 0.2s linear;
+  }
+  
+  .to-top.active {
+    transform: scale(1);
+    transition: all 0.2s linear;
+  }
+  
+  .to-top i {
+    font-size: 1.2rem;
+  }
+  
+  /* Animaciones globales */
+  @keyframes lineAnimationFromTop {
+    0% {
+      top: 0;
+    }
+    50% {
+      top: 110%;
+    }
+    100% {
+      top: 0;
+    }
+  }
+  
+  @keyframes lineAnimationFromBottom {
+    0% {
+      bottom: 0;
+    }
+    50% {
+      bottom: 110%;
+    }
+    100% {
+      bottom: 0;
+    }
+  }
+  
+  @keyframes fade-up-light {
+    0% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes inputShadow {
+    to {
+      box-shadow: 0 4px 15px -4px var(--cian-innovacion);
+    }
+  }
+  
+  /* Media queries para container y elementos comunes */
+  @media (min-width: 450px) {
+    .container {
+      max-width: 450px;
+    }
+  }
+  
+  @media (min-width: 610px) {
+    .container {
+      max-width: 610px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .container {
+      max-width: 768px;
+      padding: 0 30px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .container {
+      max-width: 1400px;
+      padding: 0 40px;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 1400px;
+      padding: 0 50px;
+    }
+  }
+  
+  @media (min-width: 1536px) {
+    .container {
+      max-width: 1500px;
+      padding: 0 60px;
+    }
+  }

@@ -1,0 +1,42 @@
+---
+// ServiceDetail.astro - Detalle completo de un servicio específico
+interface Props {
+  title: string;
+  icon: string;
+  description: string;
+  items: string[];
+}
+
+const { title, icon, description, items } = Astro.props;
+---
+
+<div class="service-detail">
+  <div class="service-header">
+    <div class="service-icon">
+      <i class={`bx bx-${icon}`}></i>
+    </div>
+    
+    <h1>{title}</h1>
+  </div>
+  
+  <div class="service-content">
+    <p class="service-description">{description}</p>
+    
+    <div class="service-features">
+      <h2>Servicios específicos</h2>
+      <ul>
+        {items.map(item => (
+          <li>
+            <i class='bx bx-check-circle'></i>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+    
+    <div class="service-cta">
+      <a href="/contacto" class="btn btn-primary">Consultar sobre este servicio</a>
+      <a href="/proyectos" class="btn btn-secondary">Ver proyectos relacionados</a>
+    </div>
+  </div>
+</div>

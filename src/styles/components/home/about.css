@@ -1,0 +1,89 @@
+/* Estilos para la sección About */
+.about {
+    overflow: hidden;
+    position: relative;
+    padding: 6rem 0;
+  }
+  
+  .about::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    top: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(38, 50, 56, 1) 8%,
+      rgba(255, 255, 255, 0) 50%
+    );
+  }
+  
+  .about .container .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+  }
+  
+  .about .container .content .title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 16px;
+    border: 2px solid var(--gris-oscuro);
+    border-top-color: var(--negro);
+    border-bottom-color: var(--negro);
+    border-radius: 16px;
+    transition: .2s linear;
+  }
+  
+  .about .container .content .title:hover {
+    border-top-color: var(--gris-oscuro);
+    border-bottom-color: var(--gris-oscuro);
+    transition: .2s linear;
+  }
+  
+  .about .container .content .title h1 {
+    font-family: var(--montserrat);
+    font-weight: bold;
+    font-size: 1.4rem;
+    text-align: center;
+  }
+  
+  .about .container .content .title .light-1 {
+    position: absolute;
+    left: -2px;
+    width: 2px;
+    height: 35%;
+    background-color: var(--azul-tecnologico);
+    box-shadow: 0 0 2px var(--azul-tecnologico), 0 0 5px var(--azul-tecnologico);
+  }
+  
+  .about .container .content .title .light-2 {
+    position: absolute;
+    right: -2px;
+    width: 2px;
+    height: 35%;
+    background-color: var(--cian-innovacion);
+    box-shadow: 0 0 2px var(--cian-innovacion), 0 0 10px var(--cian-innovacion);
+  }
+  
+  .about .container .content .row {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+  }
+  
+    .about .container .content .row .column {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }

@@ -1,0 +1,26 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import Header from '../../components/global/Header.astro';
+import Footer from '../../components/global/Footer.astro';
+import ServiceDetail from '../../components/services/ServiceDetail.astro';
+---
+
+<ServiceLayout 
+  service="Ingeniería Civil" 
+  description="Servicios de ingeniería civil de vanguardia">
+  <Header />
+  <ServiceDetail 
+    title="Ingeniería Civil de Vanguardia"
+    icon="building-house"
+    description="Dominamos el modelado BIM y diseñamos infraestructuras capaces de superar los desafíos sísmicos más exigentes."
+    items={[
+      "Elaboración de expedientes técnicos para obras públicas y privadas",
+      "Modelación BIM (Civil 3D, AutoCAD, Revit, Navisworks, Dynamo)",
+      "Diseño estructural sismorresistente",
+      "Supervisión técnica de obras",
+      "Estudios de factibilidad de proyectos de construcción",
+      "Auditorías técnicas de infraestructuras existentes"
+    ]}
+  />
+  <Footer />
+</ServiceLayout>

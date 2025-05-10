@@ -1,0 +1,50 @@
+[
+    {
+      "id": "ingenieria-civil",
+      "title": "Ingeniería Civil de Vanguardia",
+      "description": "Dominamos el modelado BIM y diseñamos infraestructuras capaces de superar los desafíos sísmicos más exigentes.",
+      "icon": "building-house",
+      "features": [
+        "Elaboración de expedientes técnicos para obras públicas y privadas",
+        "Modelación BIM (Civil 3D, AutoCAD, Revit, Navisworks, Dynamo)",
+        "Diseño estructural sismorresistente",
+        "Supervisión técnica de obras"
+      ]
+    },
+    {
+      "id": "automatizacion",
+      "title": "Automatización e IoT",
+      "description": "Creamos sistemas robóticos y redes de sensores que convierten un simple proyecto en una obra 'inteligente', reduciendo tiempos y costos.",
+      "icon": "chip",
+      "features": [
+        "Diseño de sistemas automatizados",
+        "Redes de sensores IoT",
+        "Integración de sistemas de control",
+        "Monitoreo remoto de infraestructuras"
+      ]
+    },
+    {
+      "id": "consultoria",
+      "title": "Consultoría Ágil y Estratégica",
+      "description": "Implementamos metodologías ágiles y mejores prácticas para que cada etapa avance sin fricción, garantizando calidad y transparencia.",
+      "icon": "line-chart",
+      "features": [
+        "Gestión ágil de proyectos",
+        "Optimización de procesos",
+        "Auditorías de calidad",
+        "Análisis de viabilidad económica"
+      ]
+    },
+    {
+      "id": "geoespacial",
+      "title": "Análisis Geoespacial y Sostenibilidad",
+      "description": "Con ArcGIS y QGIS planificamos el territorio, diseñamos cartografías digitales y abrimos el camino hacia la construcción verde.",
+      "icon": "map-alt",
+      "features": [
+        "Análisis territorial con SIG",
+        "Planificación urbana sostenible",
+        "Certificaciones ambientales LEED/EDGE",
+        "Estudios de impacto ambiental"
+      ]
+    }
+  ]

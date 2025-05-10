@@ -1,0 +1,110 @@
+---
+// Props que puede recibir el layout
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { 
+  title, 
+  description = "CAITEC - Soluciones integradas de ingeniería civil, mecatrónica y empresarial" 
+} = Astro.props;
+
+// Importar estilos directamente en el layout
+import '../styles/global.css';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" 
+      rel="stylesheet" />
+    <!-- BoxIcons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
+    <!-- AOS para animaciones de scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- Variables CSS -->
+    <style is:inline>
+      :root {
+        --azul-tecnologico: #0288D1;
+        --cian-innovacion: #00BCD4;
+        --verde-sostenible: #26A69A;
+        --turquesa-digital: #4DB6AC;
+        --gris-claro: #ECEFF1;
+        --gris-oscuro: #37474F;
+        --negro: #263238;
+        --blanco: #FFFFFF;
+        --montserrat: "Montserrat", sans-serif;
+        --roboto: "Roboto", sans-serif;
+      }
+    </style>
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot /> <!-- Aquí se inserta el contenido de la página -->
+    <!-- AOS para animaciones -->
+    <script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Inicializar AOS -->
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', function() {
+        AOS.init({
+          duration: 800,
+          once: false,
+          mirror: true
+        });
+      });
+    </script>
+    <!-- Scripts adicionales -->
+    <script>
+      // Control de scroll para header fijo
+      document.addEventListener('DOMContentLoaded', () => {
+        let lastScrollTop = 0;
+        const header = document.querySelector("header");
+        const toTop = document.querySelector(".to-top");
+        
+        window.addEventListener("scroll", () => {
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          
+          // Cambiar estilo del header al hacer scroll
+          if (header) {
+            if (scrollTop > 50) {
+              header.classList.add("scrolled");
+            } else {
+              header.classList.remove("scrolled");
+            }
+          }
+          
+          // Mostrar/ocultar botón para subir
+          if (toTop) {
+            if (scrollTop > 300) {
+              toTop.classList.add("active");
+            } else {
+              toTop.classList.remove("active");
+            }
+          }
+          
+          lastScrollTop = scrollTop;
+        });
+        
+        // Botón para subir al inicio
+        if (toTop) {
+          toTop.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

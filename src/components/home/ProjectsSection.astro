@@ -1,0 +1,173 @@
+---
+// Importar estilos específicos para este componente
+import '../../styles/components/projects/projects.css';
+---
+
+<section class="projects" id="projects">
+  <div class="container">
+    <div class="content">
+      <div
+        class="title"
+        data-aos="fade-down"
+        data-aos-duration="1000"
+        data-aos-delay="200"
+      >
+        <h1>Proyectos Destacados</h1>
+        <div class="light-1"></div>
+        <div class="light-2"></div>
+      </div>
+
+      <div class="projects-filter" data-aos="fade-up" data-aos-duration="800">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="civil">Ingeniería Civil</button>
+        <button class="filter-btn" data-filter="mecatronica">Mecatrónica</button>
+        <button class="filter-btn" data-filter="consultoria">Consultoría</button>
+        <button class="filter-btn" data-filter="sostenibilidad">Sostenibilidad</button>
+      </div>
+
+      <div class="projects-grid">
+        <div
+          class="project-card"
+          data-category="civil"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="200"
+        >
+          <div class="project-image">
+            <img src="/assets/projects/proyecto-edificio.jpg" alt="Edificio Corporativo Smart Tower" />
+            <div class="project-overlay">
+              <div class="project-category">Ingeniería Civil</div>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>Edificio Corporativo Smart Tower</h3>
+            <p>
+              Diseño estructural y modelado BIM completo para un edificio de oficinas de 18 pisos con certificación LEED Gold en el centro financiero de Lima.
+            </p>
+            <a href="/proyectos/smart-tower" class="btn-view-project">
+              <span>Ver Proyecto</span>
+              <i class="bx bx-right-arrow-alt"></i>
+            </a>
+          </div>
+        </div>
+
+        <div
+          class="project-card"
+          data-category="mecatronica"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="300"
+        >
+          <div class="project-image">
+            <img src="/assets/projects/proyecto-automatizacion.jpg" alt="Sistema Automatizado de Logística" />
+            <div class="project-overlay">
+              <div class="project-category">Mecatrónica</div>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>Sistema Automatizado de Logística</h3>
+            <p>
+              Implementación de un sistema completo de automatización para el centro de distribución de una empresa líder en retail, incrementando su eficiencia en un 45%.
+            </p>
+            <a href="/proyectos/automat-logistica" class="btn-view-project">
+              <span>Ver Proyecto</span>
+              <i class="bx bx-right-arrow-alt"></i>
+            </a>
+          </div>
+        </div>
+
+        <div
+          class="project-card"
+          data-category="consultoria"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="400"
+        >
+          <div class="project-image">
+            <img src="/assets/projects/proyecto-consultoria.jpg" alt="Transformación Digital Manufacturera" />
+            <div class="project-overlay">
+              <div class="project-category">Consultoría</div>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>Transformación Digital Manufacturera</h3>
+            <p>
+              Asesoría integral para la transformación digital de una planta manufacturera, optimizando procesos y reduciendo tiempos de producción en un 30%.
+            </p>
+            <a href="/proyectos/transform-digital" class="btn-view-project">
+              <span>Ver Proyecto</span>
+              <i class="bx bx-right-arrow-alt"></i>
+            </a>
+          </div>
+        </div>
+
+        <div
+          class="project-card"
+          data-category="sostenibilidad"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="500"
+        >
+          <div class="project-image">
+            <img src="/assets/projects/proyecto-sostenible.jpg" alt="Parque Eco-Tecnológico" />
+            <div class="project-overlay">
+              <div class="project-category">Sostenibilidad</div>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>Parque Eco-Tecnológico</h3>
+            <p>
+              Diseño e implementación de un parque público autosostenible con sistemas de captación de energía solar, tratamiento de aguas y monitoreo ambiental mediante IoT.
+            </p>
+            <a href="/proyectos/parque-eco" class="btn-view-project">
+              <span>Ver Proyecto</span>
+              <i class="bx bx-right-arrow-alt"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="projects-cta">
+        <a href="/proyectos" class="btn-all-projects">
+          <span>Ver Portafolio Completo</span>
+          <i class="bx bx-chevron-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    if (filterButtons.length && projectCards.length) {
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          
+          const filterValue = button.getAttribute('data-filter');
+          
+          projectCards.forEach((card: Element) => {
+            const cardElement = card as unknown as HTMLElement;
+            if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+              cardElement.style.display = 'block';
+              setTimeout(() => {
+                cardElement.style.opacity = '1';
+                cardElement.style.transform = 'translateY(0)';
+              }, 100);
+            } else {
+              cardElement.style.opacity = '0';
+              cardElement.style.transform = 'translateY(20px)';
+              setTimeout(() => {
+                cardElement.style.display = 'none';
+              }, 500);
+            }
+          });
+        });
+      });
+    }
+  });
+</script>

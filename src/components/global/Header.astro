@@ -1,0 +1,263 @@
+---
+// Importar estilos específicos para este componente
+import '../../styles/components/global/header.css';
+---
+
+<header data-aos="fade-down" data-aos-duration="1000" data-aos-delay="200">
+  <div class="container">
+    <div class="content">
+      <div 
+        data-aos="fade-down-right"
+        data-aos-duration="1000"
+        data-aos-delay="300"
+        class="logo"
+      >
+        <img src="/assets/global/logo.svg" alt="CAITEC" />
+        <a href="/">CAITEC</a>
+      </div>
+
+      <nav>
+        <a href="/">Inicio</a>
+        
+        <!-- Megamenú Servicios -->
+        <div class="megamenu-container">
+          <a href="#" class="megamenu-trigger">Servicios <i class="bx bx-chevron-down"></i></a>
+          <div class="megamenu">
+            <div class="megamenu-grid">
+              <!-- Columna: Ingeniería -->
+              <div class="megamenu-column">
+                <h3>Ingeniería Civil</h3>
+                <ul>
+                  <li><a href="/servicios/expedientes-tecnicos">Expedientes Técnicos</a></li>
+                  <li><a href="/servicios/modelacion-bim">Modelación BIM</a></li>
+                  <li><a href="/servicios/obras-publicas">Obras Públicas</a></li>
+                  <li><a href="/servicios/revision-proyectos">Revisión de Proyectos</a></li>
+                </ul>
+              </div>
+              
+              <!-- Columna: Mecatrónica -->
+              <div class="megamenu-column">
+                <h3>Mecatrónica</h3>
+                <ul>
+                  <li><a href="/servicios/automatizacion">Automatización Industrial</a></li>
+                  <li><a href="/servicios/integracion-iot">Integración IoT</a></li>
+                  <li><a href="/servicios/sistemas-control">Sistemas de Control</a></li>
+                  <li><a href="/servicios/robotica">Robótica Especializada</a></li>
+                </ul>
+              </div>
+              
+              <!-- Columna: Empresarial -->
+              <div class="megamenu-column">
+                <h3>Consultoría Empresarial</h3>
+                <ul>
+                  <li><a href="/servicios/optimizacion-procesos">Optimización de Procesos</a></li>
+                  <li><a href="/servicios/gestion-proyectos">Gestión de Proyectos</a></li>
+                  <li><a href="/servicios/innovacion-corporativa">Innovación Corporativa</a></li>
+                  <li><a href="/servicios/transformacion-digital">Transformación Digital</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Menú Proyectos -->
+        <a href="/proyectos">Proyectos</a>
+        
+        <!-- Menú Nosotros -->
+        <a href="/nosotros">Nosotros</a>
+        
+        <!-- Menú Contacto -->
+        <a href="/contacto">Contacto</a>
+      </nav>
+
+      <div class="extra-nav">
+        <a 
+          href="/contacto"
+          data-aos="fade-down-left"
+          data-aos-duration="1000"
+          data-aos-delay="400"
+          class="cta-button"
+        >
+          SOLICITAR CONSULTA
+        </a>
+
+        <button class="btn-menu" id="btn-menu">
+          <i class="bx bx-menu-alt-right icon"></i>
+        </button>
+      </div>
+
+      <div class="mobile-nav">
+        <button class="close-mobile-nav">
+          <i class="bx bx-x icon"></i>
+        </button>
+        <div class="nav">
+          <a href="/">Inicio</a>
+          
+          <!-- Acordeón Servicios -->
+          <div class="mobile-accordion">
+            <div class="mobile-accordion-header">
+              <span>Servicios</span>
+              <i class="bx bx-chevron-down"></i>
+            </div>
+            <div class="mobile-accordion-content">
+              <h4>Ingeniería Civil</h4>
+              <a href="/servicios/expedientes-tecnicos">Expedientes Técnicos</a>
+              <a href="/servicios/modelacion-bim">Modelación BIM</a>
+              <a href="/servicios/obras-publicas">Obras Públicas</a>
+              <a href="/servicios/revision-proyectos">Revisión de Proyectos</a>
+              
+              <h4>Mecatrónica</h4>
+              <a href="/servicios/automatizacion">Automatización Industrial</a>
+              <a href="/servicios/integracion-iot">Integración IoT</a>
+              <a href="/servicios/sistemas-control">Sistemas de Control</a>
+              <a href="/servicios/robotica">Robótica Especializada</a>
+              
+              <h4>Consultoría Empresarial</h4>
+              <a href="/servicios/optimizacion-procesos">Optimización de Procesos</a>
+              <a href="/servicios/gestion-proyectos">Gestión de Proyectos</a>
+              <a href="/servicios/innovacion-corporativa">Innovación Corporativa</a>
+              <a href="/servicios/transformacion-digital">Transformación Digital</a>
+            </div>
+          </div>
+          
+          <a href="/proyectos">Proyectos</a>
+          <a href="/nosotros">Nosotros</a>
+          <a href="/contacto">Contacto</a>
+          <a href="/contacto" class="mobile-cta-btn">SOLICITAR CONSULTA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<a href="#" class="to-top"><i class="bx bx-chevron-up"></i></a>
+
+<script>
+  // Este es un script que se ejecutará en el cliente
+  document.addEventListener('DOMContentLoaded', function() {
+    // Menú móvil: apertura y cierre
+    const btnMenu = document.getElementById('btn-menu');
+    const closeBtn = document.querySelector('.close-mobile-nav');
+    const mobileNav = document.querySelector('.mobile-nav');
+
+    if (btnMenu && closeBtn && mobileNav) {
+      btnMenu.addEventListener('click', () => {
+        mobileNav.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevenir scroll
+      });
+
+      closeBtn.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = ''; // Restaurar scroll
+      });
+    }
+
+    // Variables para controlar los estados del menú
+    let activeMenu: HTMLElement | null = null;
+
+    // Manejo de megamenús en desktop
+    const megamenuContainers = document.querySelectorAll<HTMLElement>('.megamenu-container');
+
+    megamenuContainers.forEach(container => {
+      const trigger = container.querySelector<HTMLElement>('.megamenu-trigger');
+      const megamenu = container.querySelector<HTMLElement>('.megamenu');
+
+      if (trigger && megamenu) {
+        // Variable para controlar el estado del menú
+        let isMenuActive = false;
+
+        // Abrir el menú
+        const openMenu = () => {
+          // Si hay otro menú activo, cerrarlo
+          if (activeMenu && activeMenu !== megamenu) {
+            activeMenu.classList.remove('active');
+          }
+
+          // Activar este menú
+          megamenu.classList.add('active');
+          activeMenu = megamenu;
+          isMenuActive = true;
+        };
+
+        // Posible cierre del menú
+        const possiblyCloseMenu = () => {
+          isMenuActive = false;
+
+          // Pequeño retraso para permitir que el mouse se mueva entre elementos
+          setTimeout(() => {
+            if (!isMenuActive && activeMenu === megamenu) {
+              megamenu.classList.remove('active');
+              activeMenu = null;
+            }
+          }, 100);
+        };
+
+        // Eventos de ratón
+        trigger.addEventListener('mouseenter', openMenu);
+        trigger.addEventListener('mouseleave', possiblyCloseMenu);
+        megamenu.addEventListener('mouseenter', () => { isMenuActive = true; });
+        megamenu.addEventListener('mouseleave', possiblyCloseMenu);
+
+        // Evento de clic para dispositivos táctiles
+        trigger.addEventListener('click', (e) => {
+          e.preventDefault();
+
+          const isActive = megamenu.classList.contains('active');
+
+          // Cerrar todos los menús
+          document.querySelectorAll<HTMLElement>('.megamenu').forEach(menu => {
+            menu.classList.remove('active');
+          });
+
+          // Si no estaba activo, abrirlo
+          if (!isActive) {
+            megamenu.classList.add('active');
+            activeMenu = megamenu;
+          } else {
+            activeMenu = null;
+          }
+        });
+      }
+    });
+
+    // Cerrar menús al hacer clic fuera
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement | null;
+
+      if (target && !target.closest('.megamenu') && !target.closest('.megamenu-trigger') && activeMenu) {
+        activeMenu.classList.remove('active');
+        activeMenu = null;
+      }
+    });
+
+    // Acordeones en menú móvil
+    const accordions = document.querySelectorAll<HTMLElement>('.mobile-accordion');
+
+    accordions.forEach(accordion => {
+      const header = accordion.querySelector<HTMLElement>('.mobile-accordion-header');
+      const content = accordion.querySelector<HTMLElement>('.mobile-accordion-content');
+      const icon = header?.querySelector<HTMLElement>('i');
+
+      if (header && content && icon) {
+        header.addEventListener('click', () => {
+          // Cerrar otros acordeones
+          accordions.forEach(acc => {
+            if (acc !== accordion) {
+              const accContent = acc.querySelector<HTMLElement>('.mobile-accordion-content');
+              const accIcon = acc.querySelector<HTMLElement>('.mobile-accordion-header i');
+
+              if (accContent && accIcon) {
+                accContent.classList.remove('active');
+                accIcon.classList.remove('rotate');
+              }
+            }
+          });
+
+          // Abrir/cerrar este acordeón
+          content.classList.toggle('active');
+          icon.classList.toggle('rotate');
+        });
+      }
+    });
+  });
+</script>

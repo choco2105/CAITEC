@@ -1,0 +1,27 @@
+---
+// index.astro - Página principal
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/global/Header.astro';
+import Footer from '../components/global/Footer.astro';
+import HeroSection from '../components/home/HeroSection.astro';
+import ServicesSection from '../components/home/ServicesSection.astro';
+import AboutSection from '../components/home/AboutSection.astro';
+import ProjectsSection from '../components/home/ProjectsSection.astro';
+import TeamSection from '../components/home/TeamSection.astro';
+import ContactSection from '../components/home/ContactSection.astro';
+---
+
+<MainLayout title="CAITEC - Ingeniería Multidisciplinaria">
+  <Header />
+  
+  <main>
+    <HeroSection />
+    <ServicesSection />
+    <ProjectsSection />
+    <AboutSection />
+    <TeamSection />
+    <ContactSection />
+  </main>
+  
+  <Footer />
+</MainLayout>

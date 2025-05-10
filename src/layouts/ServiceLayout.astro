@@ -1,0 +1,21 @@
+---
+// ServiceLayout.astro - Layout específico para páginas de servicios
+import MainLayout from './MainLayout.astro';
+
+// Props específicos para servicios
+interface Props {
+  service: string; 
+  description?: string;
+}
+
+const { 
+  service, 
+  description 
+} = Astro.props;
+---
+
+<MainLayout title={`${service} | CAITEC`} description={description}>
+  <div class="service-page">
+    <slot />
+  </div>
+</MainLayout>
