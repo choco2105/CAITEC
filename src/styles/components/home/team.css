@@ -1,0 +1,365 @@
+/* team.css - Estilos para la sección de Equipo */
+
+.team {
+  position: relative;
+  padding: 6rem 0;
+  background-color: var(--negro);
+  overflow: hidden;
+}
+
+/* Elementos decorativos de fondo */
+.team-bg-element {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.05;
+  z-index: 0;
+}
+
+.team-bg-element.element-1 {
+  top: -100px;
+  left: -100px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--verde-sostenible) 0%, rgba(38, 166, 154, 0) 70%);
+}
+
+.team-bg-element.element-2 {
+  bottom: -150px;
+  right: -150px;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, var(--turquesa-digital) 0%, rgba(77, 182, 172, 0) 70%);
+}
+
+.team .content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Encabezado de sección, reutilizando estilos base */
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.section-header .header-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(38, 166, 154, 0.1), rgba(77, 182, 172, 0.1));
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.section-header .header-icon::before {
+  content: '';
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  border: 1px dashed rgba(77, 182, 172, 0.3);
+  animation: spin 15s linear infinite;
+}
+
+.section-header .header-icon i {
+  font-size: 2.2rem;
+  color: var(--verde-sostenible);
+}
+
+.section-header h2 {
+  font-family: var(--montserrat);
+  font-weight: 700;
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #fff, #eceff1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-header .section-description {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  color: var(--gris-claro);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.section-header .header-line {
+  width: 80px;
+  height: 3px;
+  margin: 0 auto;
+  background: linear-gradient(90deg, var(--verde-sostenible), var(--turquesa-digital));
+  position: relative;
+}
+
+.section-header .header-line::before,
+.section-header .header-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--turquesa-digital);
+  transform: translateY(-50%);
+}
+
+.section-header .header-line::before {
+  left: -3px;
+}
+
+.section-header .header-line::after {
+  right: -3px;
+}
+
+/* Grid de miembros del equipo */
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+/* Tarjeta de miembro del equipo */
+.team-card {
+  background: linear-gradient(145deg, rgba(55, 71, 79, 0.2), rgba(38, 50, 56, 0.2));
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Imagen del miembro */
+.member-image {
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+}
+
+.member-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.team-card:hover .member-image img {
+  transform: scale(1.1);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    0deg,
+    rgba(38, 50, 56, 0.8) 0%,
+    rgba(38, 50, 56, 0) 50%
+  );
+}
+
+/* Enlaces sociales */
+.social-links {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.team-card:hover .social-links {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.social-links a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--negro);
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+}
+
+.social-links a:hover {
+  background-color: var(--verde-sostenible);
+  color: var(--blanco);
+  transform: translateY(-3px);
+}
+
+/* Información del miembro */
+.member-info {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.member-info h3 {
+  font-family: var(--montserrat);
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: var(--blanco);
+}
+
+.member-info h4 {
+  font-family: var(--montserrat);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  color: var(--verde-sostenible);
+}
+
+.member-info p {
+  color: var(--gris-claro);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* CTA Equipo */
+.team-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.btn-team {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: var(--blanco);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-team i {
+  transition: transform 0.2s ease;
+}
+
+.btn-team:hover {
+  background-color: rgba(38, 166, 154, 0.1);
+  border-color: var(--verde-sostenible);
+}
+
+.btn-team:hover i {
+  transform: translateX(4px);
+}
+
+/* Animaciones */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Media Queries */
+@media (min-width: 640px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2.8rem;
+  }
+  
+  .section-header .section-description {
+    font-size: 1.2rem;
+  }
+  
+  .team-cta {
+    margin-top: 4rem;
+  }
+  
+  .member-image {
+    height: 320px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .team {
+    padding: 8rem 0;
+  }
+  
+  .section-header {
+    margin-bottom: 5rem;
+  }
+  
+  .team-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  
+  .member-image {
+    height: 280px;
+  }
+  
+  .member-info h3 {
+    font-size: 1.4rem;
+  }
+  
+  .member-info h4 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1279px) and (min-width: 1024px) {
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  /* Mostrar solo 3 miembros en tablet y hacer clic para ver más */
+  .team-grid .team-card:nth-child(n+4) {
+    display: none;
+  }
+}
+
+@media (max-width: 639px) {
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  
+  /* Mostrar solo 3 miembros en móvil y hacer clic para ver más */
+  .team-grid .team-card:nth-child(n+4) {
+    display: none;
+  }
+}

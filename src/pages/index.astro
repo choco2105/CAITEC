@@ -1,5 +1,5 @@
 ---
-// index.astro - Página principal
+// index.astro - Página principal mejorada
 import MainLayout from '../layouts/MainLayout.astro';
 import Header from '../components/global/Header.astro';
 import Footer from '../components/global/Footer.astro';
@@ -8,10 +8,14 @@ import ServicesSection from '../components/home/ServicesSection.astro';
 import AboutSection from '../components/home/AboutSection.astro';
 import ProjectsSection from '../components/home/ProjectsSection.astro';
 import TeamSection from '../components/home/TeamSection.astro';
+import SectorsSection from '../components/home/SectorsSection.astro';
 import ContactSection from '../components/home/ContactSection.astro';
 ---
 
-<MainLayout title="CAITEC - Ingeniería Multidisciplinaria">
+<MainLayout 
+  title="CAITEC - Ingeniería Multidisciplinaria para Proyectos de Vanguardia" 
+  description="Firma consultora especializada en servicios integrados de ingeniería civil, mecatrónica y empresarial, que ofrece soluciones innovadoras para cada etapa de tu proyecto."
+>
   <Header />
   
   <main>
@@ -20,6 +24,7 @@ import ContactSection from '../components/home/ContactSection.astro';
     <ProjectsSection />
     <AboutSection />
     <TeamSection />
+    <SectorsSection />
     <ContactSection />
   </main>
   

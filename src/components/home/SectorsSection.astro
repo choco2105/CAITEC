@@ -1,0 +1,98 @@
+---
+// SectorsSection.astro - Sección de Sectores Atendidos
+import '../../styles/components/home/sectors.css';
+
+// Datos de los sectores
+const sectors = [
+  {
+    id: "construccion",
+    name: "Sector Construcción",
+    description: "Constructoras medianas y grandes, desarrolladoras inmobiliarias, contratistas",
+    icon: "building"
+  },
+  {
+    id: "publico",
+    name: "Entidades Públicas",
+    description: "Gobiernos regionales y municipales, ministerios, empresas estatales de infraestructura",
+    icon: "cabinet"
+  },
+  {
+    id: "privado",
+    name: "Entidades Privadas",
+    description: "Corporaciones con proyectos de infraestructura, industrias en modernización, inversionistas",
+    icon: "buildings"
+  },
+  {
+    id: "educativo",
+    name: "Sector Educativo",
+    description: "Universidades e institutos técnicos, centros de investigación e innovación",
+    icon: "graduation"
+  }
+];
+---
+
+<section class="sectors" id="sectores">
+  <div class="container">
+    <div class="content">
+      <div
+        class="section-header"
+        data-aos="fade-down"
+        data-aos-duration="800"
+        data-aos-delay="100"
+      >
+        <div class="header-icon">
+          <i class="bx bx-cube-alt"></i>
+        </div>
+        <h2>Sectores que Atendemos</h2>
+        <p class="section-description">
+          Nuestras soluciones se adaptan a las necesidades específicas de diversos sectores, cada uno con sus propios retos y oportunidades que abordamos de manera personalizada.
+        </p>
+        <div class="header-line"></div>
+      </div>
+
+      <div class="sectors-grid">
+        {sectors.map((sector, index) => (
+          <div 
+            class="sector-card"
+            data-aos="fade-up"
+            data-aos-duration="800"
+            data-aos-delay={200 + (index * 100)}
+          >
+            <div class="card-content">
+              <div class="sector-icon">
+                <i class={`bx bx-${sector.icon}`}></i>
+              </div>
+              <h3>{sector.name}</h3>
+              <p>{sector.description}</p>
+            </div>
+            <div class="card-overlay"></div>
+          </div>
+        ))}
+      </div>
+      
+      <div 
+        class="sectors-cta"
+        data-aos="fade-up"
+        data-aos-duration="800"
+        data-aos-delay="600"
+      >
+        <a href="/sectores" class="btn-sectors">
+          <span>Conoce cómo podemos ayudar a tu sector</span>
+          <i class="bx bx-chevron-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Elemento decorativo con gráfico/diagrama -->
+  <div class="sectors-diagram">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path class="diagram-path" d="M100,10 L190,100 L100,190 L10,100 Z" fill="none" stroke="rgba(77, 182, 172, 0.1)" stroke-width="1"></path>
+      <circle class="diagram-node" cx="100" cy="10" r="8" fill="rgba(77, 182, 172, 0.2)"></circle>
+      <circle class="diagram-node" cx="190" cy="100" r="8" fill="rgba(77, 182, 172, 0.2)"></circle>
+      <circle class="diagram-node" cx="100" cy="190" r="8" fill="rgba(77, 182, 172, 0.2)"></circle>
+      <circle class="diagram-node" cx="10" cy="100" r="8" fill="rgba(77, 182, 172, 0.2)"></circle>
+      <circle class="diagram-center" cx="100" cy="100" r="15" fill="rgba(2, 136, 209, 0.2)"></circle>
+    </svg>
+  </div>
+</section>

@@ -1,0 +1,139 @@
+---
+// TeamSection.astro - Sección de Equipo
+import '../../styles/components/home/team.css';
+
+// Datos del equipo
+const teamMembers = [
+  {
+    name: "Ivana Berrocal Tinoco",
+    role: "Especialista en Ingeniería Civil",
+    description: "Experta en proyectos civiles de gran escala",
+    image: "/assets/team/ivana-berrocal.jpg",
+    social: {
+      linkedin: "#",
+      twitter: "#"
+    }
+  },
+  {
+    name: "Daniel Chocobar Coronado",
+    role: "Especialista en Ingeniería Mecatrónica",
+    description: "Arquitecto de la automatización que da vida a la mecatrónica",
+    image: "/assets/team/daniel-chocobar.jpg",
+    social: {
+      linkedin: "#",
+      twitter: "#"
+    }
+  },
+  {
+    name: "Yamil Berrocal Tinoco",
+    role: "Especialista en Ingeniería Empresarial",
+    description: "Estratega empresarial que afina cada modelo de negocio",
+    image: "/assets/team/yamil-berrocal.jpg",
+    social: {
+      linkedin: "#",
+      github: "#"
+    }
+  },
+  {
+    name: "Emanuel Chocobar Coronado",
+    role: "Especialista en Ingeniería Civil",
+    description: "Experto en modelación BIM y coordinación digital",
+    image: "/assets/team/emanuel-chocobar.jpg",
+    social: {
+      linkedin: "#",
+      instagram: "#"
+    }
+  },
+  {
+    name: "Dafna Berrocal Tinoco",
+    role: "Administración e Ingeniería Civil",
+    description: "Guardiana de la eficiencia operativa y la excelencia administrativa",
+    image: "/assets/team/dafna-berrocal.jpg",
+    social: {
+      linkedin: "#",
+      instagram: "#"
+    }
+  }
+];
+---
+
+<section class="team" id="equipo">
+  <div class="container">
+    <div class="content">
+      <div
+        class="section-header"
+        data-aos="fade-down"
+        data-aos-duration="800"
+        data-aos-delay="100"
+      >
+        <div class="header-icon">
+          <i class="bx bx-group"></i>
+        </div>
+        <h2>Nuestro Equipo Multidisciplinario</h2>
+        <p class="section-description">
+          Detrás de CAITEC, está un equipo tan diverso como apasionado, con especialistas que combinan experiencia técnica e innovación creativa.
+        </p>
+        <div class="header-line"></div>
+      </div>
+
+      <div class="team-grid">
+        {teamMembers.map((member, index) => (
+          <div 
+            class="team-card"
+            data-aos="fade-up"
+            data-aos-duration="800"
+            data-aos-delay={200 + (index * 100)}
+          >
+            <div class="member-image">
+              <img src={member.image} alt={member.name} />
+              <div class="image-overlay"></div>
+              <div class="social-links">
+                {member.social.linkedin && (
+                  <a href={member.social.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <i class="bx bxl-linkedin"></i>
+                  </a>
+                )}
+                {member.social.twitter && (
+                  <a href={member.social.twitter} target="_blank" rel="noopener" aria-label="Twitter">
+                    <i class="bx bxl-twitter"></i>
+                  </a>
+                )}
+                {member.social.github && (
+                  <a href={member.social.github} target="_blank" rel="noopener" aria-label="GitHub">
+                    <i class="bx bxl-github"></i>
+                  </a>
+                )}
+                {member.social.instagram && (
+                  <a href={member.social.instagram} target="_blank" rel="noopener" aria-label="Instagram">
+                    <i class="bx bxl-instagram"></i>
+                  </a>
+                )}
+              </div>
+            </div>
+            <div class="member-info">
+              <h3>{member.name}</h3>
+              <h4>{member.role}</h4>
+              <p>{member.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div 
+        class="team-cta"
+        data-aos="fade-up"
+        data-aos-duration="800"
+        data-aos-delay="700"
+      >
+        <a href="/nosotros#equipo" class="btn-team">
+          <span>Conoce más sobre nuestro equipo</span>
+          <i class="bx bx-chevron-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Elementos decorativos -->
+  <div class="team-bg-element element-1"></div>
+  <div class="team-bg-element element-2"></div>
+</section>

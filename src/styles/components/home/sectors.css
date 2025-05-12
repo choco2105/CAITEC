@@ -1,44 +1,18 @@
-/* services.css - Estilos para la sección de servicios */
+/* sectors.css - Estilos para la sección de Sectores Atendidos */
 
-.services {
+.sectors {
   position: relative;
   padding: 6rem 0;
   background-color: var(--negro);
   overflow: hidden;
 }
 
-.services::before {
-  content: "";
-  position: absolute;
-  top: -50px;
-  right: -50px;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: rgba(2, 136, 209, 0.03);
-  filter: blur(40px);
-  z-index: 0;
-}
-
-.services::after {
-  content: "";
-  position: absolute;
-  bottom: -50px;
-  left: -50px;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: rgba(0, 188, 212, 0.03);
-  filter: blur(40px);
-  z-index: 0;
-}
-
-.services .content {
+.sectors .content {
   position: relative;
   z-index: 1;
 }
 
-/* Encabezado de sección */
+/* Encabezado de sección, reutilizando estilos base */
 .section-header {
   text-align: center;
   margin-bottom: 4rem;
@@ -52,7 +26,7 @@
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(2, 136, 209, 0.1), rgba(0, 188, 212, 0.1));
+  background: linear-gradient(135deg, rgba(77, 182, 172, 0.1), rgba(38, 166, 154, 0.1));
   margin-bottom: 1.5rem;
   position: relative;
 }
@@ -63,13 +37,13 @@
   width: 90%;
   height: 90%;
   border-radius: 50%;
-  border: 1px dashed rgba(0, 188, 212, 0.3);
+  border: 1px dashed rgba(77, 182, 172, 0.3);
   animation: spin 15s linear infinite;
 }
 
 .section-header .header-icon i {
   font-size: 2.2rem;
-  color: var(--azul-tecnologico);
+  color: var(--turquesa-digital);
 }
 
 .section-header h2 {
@@ -95,7 +69,7 @@
   width: 80px;
   height: 3px;
   margin: 0 auto;
-  background: linear-gradient(90deg, var(--azul-tecnologico), var(--cian-innovacion));
+  background: linear-gradient(90deg, var(--turquesa-digital), var(--verde-sostenible));
   position: relative;
 }
 
@@ -107,7 +81,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: var(--cian-innovacion);
+  background-color: var(--verde-sostenible);
   transform: translateY(-50%);
 }
 
@@ -119,93 +93,70 @@
   right: -3px;
 }
 
-/* Grid de servicios */
-.services-grid {
+/* Grid de sectores */
+.sectors-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2.5rem;
   margin-bottom: 3rem;
 }
 
-/* Tarjeta de servicio */
-.service-card {
+/* Tarjeta de sector */
+.sector-card {
   background: linear-gradient(145deg, rgba(55, 71, 79, 0.2), rgba(38, 50, 56, 0.2));
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 16px;
   padding: 2.5rem 2rem;
-  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  transition: all 0.3s ease;
   z-index: 1;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.service-card::before {
-  content: '';
+.card-overlay {
   position: absolute;
   top: 0;
   left: 0;
-  width: 4px;
-  height: 40%;
-  background: linear-gradient(to bottom, var(--azul-tecnologico), rgba(2, 136, 209, 0.1));
-  transition: all 0.3s ease;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at top right,
+    rgba(77, 182, 172, 0.1),
+    transparent 70%
+  );
   z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
-.service-card:hover {
+.sector-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(145deg, rgba(55, 71, 79, 0.3), rgba(38, 50, 56, 0.3));
-  border-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(77, 182, 172, 0.3);
 }
 
-.service-card:hover::before {
-  height: 100%;
-  width: 6px;
+.sector-card:hover .card-overlay {
+  opacity: 1;
 }
 
-.service-icon {
+.sector-icon {
   display: inline-flex;
   justify-content: center;
   align-items: center;
   width: 60px;
   height: 60px;
   border-radius: 12px;
-  background: linear-gradient(135deg, rgba(2, 136, 209, 0.15), rgba(0, 188, 212, 0.15));
+  background: linear-gradient(135deg, rgba(77, 182, 172, 0.15), rgba(38, 166, 154, 0.15));
   margin-bottom: 1.5rem;
-  position: relative;
-  overflow: hidden;
 }
 
-.service-icon::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    circle,
-    rgba(0, 188, 212, 0.1) 0%,
-    rgba(0, 188, 212, 0) 70%
-  );
-  opacity: 0;
-  transform: scale(0.5);
-  transition: all 0.5s ease;
-}
-
-.service-card:hover .service-icon::after {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.service-icon i {
+.sector-icon i {
   font-size: 2rem;
-  color: var(--azul-tecnologico);
-  z-index: 1;
+  color: var(--turquesa-digital);
 }
 
-.service-card h3 {
+.sector-card h3 {
   font-family: var(--montserrat);
   font-weight: 700;
   font-size: 1.4rem;
@@ -213,68 +164,21 @@
   color: var(--blanco);
 }
 
-.service-card p {
+.sector-card p {
   color: var(--gris-claro);
-  margin-bottom: 1.5rem;
   line-height: 1.6;
   font-size: 1rem;
+  margin: 0;
 }
 
-.service-features {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1.5rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-}
-
-.service-features li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  color: var(--gris-claro);
-  font-size: 0.95rem;
-}
-
-.service-features li i {
-  color: var(--cian-innovacion);
-  font-size: 1.2rem;
-  margin-top: 2px;
-}
-
-.service-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--azul-tecnologico);
-  text-decoration: none;
-  transition: all 0.2s ease;
-  margin-top: 0.5rem;
-}
-
-.service-link i {
-  transition: transform 0.2s ease;
-}
-
-.service-link:hover {
-  color: var(--cian-innovacion);
-}
-
-.service-link:hover i {
-  transform: translateX(5px);
-}
-
-/* CTA de servicios */
-.services-cta {
+/* CTA Sectores */
+.sectors-cta {
   display: flex;
   justify-content: center;
   margin-top: 3rem;
 }
 
-.btn-all-services {
+.btn-sectors {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -289,17 +193,54 @@
   transition: all 0.3s ease;
 }
 
-.btn-all-services i {
+.btn-sectors i {
   transition: transform 0.2s ease;
 }
 
-.btn-all-services:hover {
-  background-color: rgba(2, 136, 209, 0.1);
-  border-color: var(--azul-tecnologico);
+.btn-sectors:hover {
+  background-color: rgba(77, 182, 172, 0.1);
+  border-color: var(--turquesa-digital);
 }
 
-.btn-all-services:hover i {
+.btn-sectors:hover i {
   transform: translateX(4px);
+}
+
+/* Elemento decorativo de diagrama */
+.sectors-diagram {
+  position: absolute;
+  bottom: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.diagram-path {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: dash 8s linear infinite;
+}
+
+.diagram-node {
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.diagram-node:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.diagram-node:nth-child(3) {
+  animation-delay: 2s;
+}
+
+.diagram-node:nth-child(4) {
+  animation-delay: 3s;
+}
+
+.diagram-center {
+  animation: pulse 4s ease-in-out infinite alternate;
 }
 
 /* Animaciones */
@@ -312,9 +253,32 @@
   }
 }
 
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 600;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -600;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
 /* Media Queries */
 @media (min-width: 640px) {
-  .services-grid {
+  .sectors-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
@@ -325,7 +289,7 @@
 }
 
 @media (min-width: 1024px) {
-  .services-grid {
+  .sectors-grid {
     grid-template-columns: repeat(4, 1fr);
     gap: 2.5rem;
   }
@@ -338,13 +302,20 @@
     font-size: 1.2rem;
   }
   
-  .services-cta {
+  .sectors-cta {
     margin-top: 4rem;
+  }
+  
+  .sectors-diagram {
+    width: 500px;
+    height: 500px;
+    bottom: -150px;
+    right: -150px;
   }
 }
 
 @media (min-width: 1280px) {
-  .services {
+  .sectors {
     padding: 8rem 0;
   }
   
@@ -352,15 +323,20 @@
     margin-bottom: 5rem;
   }
   
-  .service-card {
+  .sector-card {
     padding: 3rem 2.5rem;
   }
   
-  .service-card h3 {
+  .sector-card h3 {
     font-size: 1.5rem;
   }
   
-  .service-card p {
+  .sector-card p {
     font-size: 1.05rem;
+  }
+  
+  .sectors-diagram {
+    width: 600px;
+    height: 600px;
   }
 }

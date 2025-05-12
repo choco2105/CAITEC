@@ -1,89 +1,358 @@
-/* Estilos para la sección About */
+/* about.css - Estilos actualizados para la sección Sobre Nosotros */
+
 .about {
-    overflow: hidden;
-    position: relative;
-    padding: 6rem 0;
+  position: relative;
+  padding: 6rem 0;
+  background-color: var(--fondo-alternativo);
+  overflow: hidden;
+}
+
+/* Elementos decorativos de fondo */
+.about-bg-element {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.2;
+  z-index: 0;
+}
+
+.about-bg-element.element-1 {
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--turquesa) 0%, rgba(0, 188, 212, 0) 70%);
+}
+
+.about-bg-element.element-2 {
+  bottom: -80px;
+  left: -80px;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, var(--azul-principal) 0%, rgba(2, 136, 209, 0) 70%);
+}
+
+.about .content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Encabezado de sección, reutilizando estilos ajustados */
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.section-header .header-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(2, 136, 209, 0.1), rgba(0, 188, 212, 0.1));
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.section-header .header-icon::before {
+  content: '';
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 188, 212, 0.5);
+  animation: spin 15s linear infinite;
+}
+
+.section-header .header-icon i {
+  font-size: 2.2rem;
+  color: var(--azul-principal);
+}
+
+.section-header h2 {
+  font-family: var(--montserrat);
+  font-weight: 700;
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--azul-principal);
+}
+
+.section-header .section-description {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  color: var(--gris-texto);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.section-header .header-line {
+  width: 80px;
+  height: 3px;
+  margin: 0 auto;
+  background: linear-gradient(90deg, var(--azul-principal), var(--turquesa));
+  position: relative;
+}
+
+.section-header .header-line::before,
+.section-header .header-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--turquesa);
+  transform: translateY(-50%);
+}
+
+.section-header .header-line::before {
+  left: -3px;
+}
+
+.section-header .header-line::after {
+  right: -3px;
+}
+
+/* Grid de información Sobre Nosotros */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+/* Tarjeta de información */
+.about-card {
+  background: var(--blanco);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 80px;
+  background: linear-gradient(to bottom, var(--azul-principal), rgba(2, 136, 209, 0));
+}
+
+.about-card h3 {
+  font-family: var(--montserrat);
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--gris-oscuro);
+}
+
+.about-card p {
+  color: var(--gris-texto);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.about-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* Misión y Visión */
+.mission-vision {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.about-card.mission .card-highlight {
+  background: linear-gradient(to bottom, var(--azul-principal), rgba(2, 136, 209, 0));
+}
+
+.about-card.vision .card-highlight {
+  background: linear-gradient(to bottom, var(--turquesa), rgba(0, 188, 212, 0));
+}
+
+/* Valores */
+.values-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.value-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.value-item:hover {
+  transform: translateX(10px);
+}
+
+.value-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(2, 136, 209, 0.1), rgba(0, 188, 212, 0.1));
+  margin-top: 0.5rem;
+}
+
+.value-icon i {
+  font-size: 1.6rem;
+  color: var(--azul-principal);
+}
+
+.value-content h4 {
+  font-family: var(--montserrat);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--gris-oscuro);
+}
+
+.value-content p {
+  color: var(--gris-texto);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* CTA Sobre Nosotros */
+.about-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.btn-about {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  background-color: var(--azul-principal);
+  color: var(--blanco);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 14px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(2, 136, 209, 0.2);
+}
+
+.btn-about i {
+  transition: transform 0.2s ease;
+}
+
+.btn-about:hover {
+  background-color: var(--azul-claro);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(2, 136, 209, 0.3);
+}
+
+.btn-about:hover i {
+  transform: translateX(4px);
+}
+
+/* Animaciones */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Media Queries */
+@media (min-width: 640px) {
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .about-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
   
-  .about::before {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 10%;
-    top: 0;
-    background: linear-gradient(
-      180deg,
-      rgba(38, 50, 56, 1) 8%,
-      rgba(255, 255, 255, 0) 50%
-    );
+  .about-column.values {
+    grid-column: span 2;
   }
   
-  .about .container .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 4rem;
+  .values-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
   
-  .about .container .content .title {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 16px;
-    border: 2px solid var(--gris-oscuro);
-    border-top-color: var(--negro);
-    border-bottom-color: var(--negro);
-    border-radius: 16px;
-    transition: .2s linear;
+  .about-column.values {
+    grid-column: auto;
   }
   
-  .about .container .content .title:hover {
-    border-top-color: var(--gris-oscuro);
-    border-bottom-color: var(--gris-oscuro);
-    transition: .2s linear;
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
   
-  .about .container .content .title h1 {
-    font-family: var(--montserrat);
-    font-weight: bold;
-    font-size: 1.4rem;
-    text-align: center;
+  .section-header h2 {
+    font-size: 2.8rem;
   }
   
-  .about .container .content .title .light-1 {
-    position: absolute;
-    left: -2px;
-    width: 2px;
-    height: 35%;
-    background-color: var(--azul-tecnologico);
-    box-shadow: 0 0 2px var(--azul-tecnologico), 0 0 5px var(--azul-tecnologico);
+  .section-header .section-description {
+    font-size: 1.2rem;
   }
   
-  .about .container .content .title .light-2 {
-    position: absolute;
-    right: -2px;
-    width: 2px;
-    height: 35%;
-    background-color: var(--cian-innovacion);
-    box-shadow: 0 0 2px var(--cian-innovacion), 0 0 10px var(--cian-innovacion);
+  .about-cta {
+    margin-top: 4rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .about {
+    padding: 8rem 0;
   }
   
-  .about .container .content .row {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 4rem;
+  .section-header {
+    margin-bottom: 5rem;
   }
   
-    .about .container .content .row .column {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-    }
+  .about-card {
+    padding: 3rem 2.5rem;
+  }
+  
+  .about-card h3 {
+    font-size: 1.6rem;
+  }
+  
+  .about-card p {
+    font-size: 1.05rem;
+  }
+  
+  .value-content h4 {
+    font-size: 1.2rem;
+  }
+  
+  .value-content p {
+    font-size: 1rem;
+  }
+}

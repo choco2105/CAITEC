@@ -1,16 +1,18 @@
 ---
-// Props que puede recibir el layout
+// MainLayout.astro - Layout principal mejorado
 interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
 }
 
 const { 
   title, 
-  description = "CAITEC - Soluciones integradas de ingeniería civil, mecatrónica y empresarial" 
+  description = "CAITEC - Soluciones integradas de ingeniería civil, mecatrónica y empresarial para proyectos de vanguardia", 
+  ogImage = "/assets/social/og-image.jpg"
 } = Astro.props;
 
-// Importar estilos directamente en el layout
+// Importar estilos globales
 import '../styles/global.css';
 ---
 
@@ -21,17 +23,37 @@ import '../styles/global.css';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Open Graph / Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_PE" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link 
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" 
       rel="stylesheet" />
+    
     <!-- BoxIcons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
+    
     <!-- AOS para animaciones de scroll -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <!-- Variables CSS -->
+    
+    <!-- Variables CSS como Custom Properties -->
     <style is:inline>
       :root {
         --azul-tecnologico: #0288D1;
@@ -46,63 +68,101 @@ import '../styles/global.css';
         --roboto: "Roboto", sans-serif;
       }
     </style>
+    
     <title>{title}</title>
   </head>
   <body>
     <slot /> <!-- Aquí se inserta el contenido de la página -->
-    <!-- AOS para animaciones -->
+    
+    <!-- AOS para animaciones de scroll -->
     <script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <!-- Inicializar AOS -->
     <script is:inline>
       document.addEventListener('DOMContentLoaded', function() {
         AOS.init({
           duration: 800,
-          once: false,
-          mirror: true
+          offset: 100,
+          once: true,
+          mirror: false,
+          easing: 'ease-out-cubic'
         });
       });
     </script>
-    <!-- Scripts adicionales -->
-    <script>
+    
+    <!-- Scripts adicionales -->    <script>
       // Control de scroll para header fijo
       document.addEventListener('DOMContentLoaded', () => {
-        let lastScrollTop = 0;
-        const header = document.querySelector("header");
-        const toTop = document.querySelector(".to-top");
-        
-        window.addEventListener("scroll", () => {
-          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        try {
+          let lastScrollTop = 0;
+          const header = document.querySelector("header");
+          const toTop = document.querySelector(".to-top");
+          const mobileNav = document.querySelector('.mobile-nav');
           
-          // Cambiar estilo del header al hacer scroll
-          if (header) {
-            if (scrollTop > 50) {
-              header.classList.add("scrolled");
-            } else {
-              header.classList.remove("scrolled");
+          // Manejador de scroll con throttle para mejor rendimiento
+          let ticking = false;
+          window.addEventListener("scroll", () => {
+            if (!ticking) {
+              window.requestAnimationFrame(() => {
+                const scrollTop = window.scrollY;
+                
+                // Cambiar estilo del header al hacer scroll
+                if (header) {
+                  header.classList.toggle("scrolled", scrollTop > 50);
+                  header.classList.toggle("header-hidden", scrollTop > 300 && scrollTop > lastScrollTop);
+                }
+                
+                // Mostrar/ocultar botón para subir
+                if (toTop) {
+                  toTop.classList.toggle("active", scrollTop > 300);
+                }
+                
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+                ticking = false;
+              });
+              ticking = true;
             }
-          }
+          }, { passive: true });
           
-          // Mostrar/ocultar botón para subir
+          // Botón para subir al inicio
           if (toTop) {
-            if (scrollTop > 300) {
-              toTop.classList.add("active");
-            } else {
-              toTop.classList.remove("active");
-            }
+            toTop.addEventListener("click", (e) => {
+              e.preventDefault();
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+              });
+            });
           }
           
-          lastScrollTop = scrollTop;
-        });
-        
-        // Botón para subir al inicio
-        if (toTop) {
-          toTop.addEventListener("click", (e) => {
-            e.preventDefault();
-            window.scrollTo({
-              top: 0,
-              behavior: "smooth"
+          // Función para cerrar el menú móvil
+          const closeMobileNav = () => {
+            if (mobileNav?.classList.contains('active')) {
+              mobileNav.classList.remove('active');
+              document.body.style.overflow = '';
+            }
+          };            // Agregar comportamiento smooth scroll a todos los enlaces internos
+          (document.querySelectorAll('a[href^="#"]') as NodeListOf<HTMLAnchorElement>).forEach((anchor) => {
+            anchor.addEventListener('click', function(this: HTMLAnchorElement, e: MouseEvent) {
+              e.preventDefault();
+              
+              // Cerrar menú móvil si está abierto
+              closeMobileNav();
+              
+              const targetId = this.getAttribute('href')?.substring(1);
+              const targetElement = targetId ? document.getElementById(targetId) : null;
+              
+              if (targetElement) {
+                const headerOffset = header ? header.offsetHeight : 80;
+                window.scrollTo({
+                  top: targetElement.offsetTop - headerOffset,
+                  behavior: 'smooth'
+                });
+              }
             });
           });
+        } catch (error) {
+          console.error('Error en la inicialización del script:', error);
         }
       });
     </script>

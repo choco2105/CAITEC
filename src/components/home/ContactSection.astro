@@ -1,0 +1,230 @@
+---
+// ContactSection.astro - Sección de Contacto
+import '../../styles/components/home/contact.css';
+---
+
+<section class="contact" id="contacto">
+  <div class="container">
+    <div class="content">
+      <div
+        class="section-header"
+        data-aos="fade-down"
+        data-aos-duration="800"
+        data-aos-delay="100"
+      >
+        <div class="header-icon">
+          <i class="bx bx-envelope"></i>
+        </div>
+        <h2>Contacta con Nuestros Expertos</h2>
+        <p class="section-description">
+          Estamos listos para escuchar tus necesidades y ayudarte a llevar tu proyecto al siguiente nivel con nuestras soluciones multidisciplinarias.
+        </p>
+        <div class="header-line"></div>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Formulario de contacto -->
+        <div 
+          class="contact-form-container"
+          data-aos="fade-right"
+          data-aos-duration="800"
+          data-aos-delay="200"
+        >
+          <form class="contact-form" id="contactForm">
+            <div class="form-header">
+              <h3>Envíanos un mensaje</h3>
+              <p>Cuéntanos sobre tu proyecto o consulta</p>
+            </div>
+
+            <div class="form-group">
+              <label for="company">
+                <i class="bx bx-building"></i>
+                <span>Empresa</span>
+              </label>
+              <input type="text" id="company" name="company" placeholder="Nombre de tu empresa" required>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">
+                  <i class="bx bx-user"></i>
+                  <span>Nombre completo</span>
+                </label>
+                <input type="text" id="name" name="name" placeholder="Tu nombre completo" required>
+              </div>
+
+              <div class="form-group">
+                <label for="position">
+                  <i class="bx bx-id-card"></i>
+                  <span>Cargo</span>
+                </label>
+                <input type="text" id="position" name="position" placeholder="Tu cargo">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">
+                  <i class="bx bx-envelope"></i>
+                  <span>Correo electrónico</span>
+                </label>
+                <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="phone">
+                  <i class="bx bx-phone"></i>
+                  <span>Teléfono</span>
+                </label>
+                <input type="tel" id="phone" name="phone" placeholder="+51 999 888 777" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="service">
+                <i class="bx bx-package"></i>
+                <span>Tipo de servicio</span>
+              </label>
+              <select id="service" name="service" required>
+                <option value="" disabled selected>Selecciona un servicio</option>
+                <option value="civil">Ingeniería Civil</option>
+                <option value="mecatronica">Tecnología y Mecatrónica</option>
+                <option value="consultoria">Consultoría Empresarial</option>
+                <option value="geoespacial">Análisis Geoespacial</option>
+                <option value="otro">Otro (especificar en mensaje)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">
+                <i class="bx bx-message-detail"></i>
+                <span>Mensaje</span>
+              </label>
+              <textarea id="message" name="message" rows="4" placeholder="Describe tu proyecto o consulta" required></textarea>
+            </div>
+
+            <div class="form-group form-privacy">
+              <input type="checkbox" id="privacy" name="privacy" required>
+              <label for="privacy">Acepto la <a href="/politica-privacidad">política de privacidad</a> y el tratamiento de mis datos.</label>
+            </div>
+
+            <button type="submit" class="btn-submit">
+              <span>Enviar consulta</span>
+              <i class="bx bx-send"></i>
+            </button>
+          </form>
+        </div>
+
+        <!-- Información de contacto y mapa -->
+        <div 
+          class="contact-info-container"
+          data-aos="fade-left"
+          data-aos-duration="800"
+          data-aos-delay="300"
+        >
+          <div class="contact-info">
+            <h3>Información de Contacto</h3>
+            
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="bx bx-map"></i>
+              </div>
+              <div class="info-content">
+                <h4>Dirección</h4>
+                <p>Jr. Chota 1454, Lima, Perú</p>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="bx bx-envelope"></i>
+              </div>
+              <div class="info-content">
+                <h4>Correo Electrónico</h4>
+                <p><a href="mailto:contacto@caitec.pe">contacto@caitec.pe</a></p>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="bx bx-phone"></i>
+              </div>
+              <div class="info-content">
+                <h4>Teléfono</h4>
+                <p><a href="tel:+51987654321">+51 987 654 321</a></p>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="bx bx-time-five"></i>
+              </div>
+              <div class="info-content">
+                <h4>Horario de Atención</h4>
+                <p>Lunes a Viernes, 9:00 a.m. - 6:00 p.m.</p>
+              </div>
+            </div>
+            
+            <div class="social-links">
+              <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <i class="bx bxl-linkedin"></i>
+              </a>
+              <a href="#" target="_blank" rel="noopener" aria-label="Instagram">
+                <i class="bx bxl-instagram"></i>
+              </a>
+              <a href="#" target="_blank" rel="noopener" aria-label="YouTube">
+                <i class="bx bxl-youtube"></i>
+              </a>
+            </div>
+          </div>
+          
+          <div class="contact-map">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.9697356967077!2d-77.05065838465712!3d-12.049343291455264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8cf35576989%3A0x2f1f21ac530e0d9d!2sJr.%20Chota%201454%2C%20Lima%2015001%2C%20Per%C3%BA!5e0!3m2!1ses-419!2sus!4v1645654098972!5m2!1ses-419!2sus"
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy"
+              title="Ubicación de CAITEC"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- CTA Flotante -->
+  <div class="floating-cta">
+    <a href="#contacto" class="btn-floating">
+      <i class="bx bx-envelope"></i>
+      <span>Solicitar consultoría</span>
+    </a>
+  </div>
+</section>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Form handling
+    const form = document.getElementById('contactForm');
+    if (form) {
+      form.onsubmit = function(e) {
+        e.preventDefault();
+        alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
+        form.reset();
+      };
+    }
+
+    // Floating CTA
+    const cta = document.querySelector('.floating-cta');
+    if (cta) {
+      window.onscroll = function() {
+        if (window.scrollY > 300) {
+          cta.classList.add('visible');
+        } else {
+          cta.classList.remove('visible');
+        }
+      };
+    }
+  });
+</script>

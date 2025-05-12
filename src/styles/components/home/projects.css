@@ -1,44 +1,42 @@
-/* services.css - Estilos para la sección de servicios */
+/* projects.css - Estilos para la sección de Proyectos */
 
-.services {
+.projects {
   position: relative;
   padding: 6rem 0;
   background-color: var(--negro);
   overflow: hidden;
 }
 
-.services::before {
-  content: "";
+/* Elementos decorativos de fondo */
+.projects-bg-element {
   position: absolute;
-  top: -50px;
-  right: -50px;
-  width: 200px;
-  height: 200px;
   border-radius: 50%;
-  background: rgba(2, 136, 209, 0.03);
-  filter: blur(40px);
+  opacity: 0.03;
   z-index: 0;
 }
 
-.services::after {
-  content: "";
-  position: absolute;
-  bottom: -50px;
-  left: -50px;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: rgba(0, 188, 212, 0.03);
-  filter: blur(40px);
-  z-index: 0;
+.projects-bg-element.element-1 {
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--azul-tecnologico) 0%, rgba(2, 136, 209, 0) 70%);
 }
 
-.services .content {
+.projects-bg-element.element-2 {
+  bottom: -150px;
+  left: -150px;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, var(--cian-innovacion) 0%, rgba(0, 188, 212, 0) 70%);
+}
+
+.projects .content {
   position: relative;
   z-index: 1;
 }
 
-/* Encabezado de sección */
+/* Encabezado de sección, reutilizando estilos base */
 .section-header {
   text-align: center;
   margin-bottom: 4rem;
@@ -119,131 +117,150 @@
   right: -3px;
 }
 
-/* Grid de servicios */
-.services-grid {
+/* Filtros de proyectos */
+.projects-filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 3rem;
+}
+
+.filter-btn {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--gris-claro);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  background-color: rgba(2, 136, 209, 0.1);
+  color: var(--blanco);
+  border-color: rgba(2, 136, 209, 0.2);
+}
+
+.filter-btn.active {
+  background-color: var(--azul-tecnologico);
+  color: var(--blanco);
+  border-color: var(--azul-tecnologico);
+}
+
+/* Grid de proyectos */
+.projects-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2.5rem;
   margin-bottom: 3rem;
 }
 
-/* Tarjeta de servicio */
-.service-card {
+/* Tarjeta de proyecto */
+.project-card {
   background: linear-gradient(145deg, rgba(55, 71, 79, 0.2), rgba(38, 50, 56, 0.2));
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 16px;
-  padding: 2.5rem 2rem;
-  transition: all 0.3s ease;
-  position: relative;
   overflow: hidden;
-  z-index: 1;
+  transition: all 0.3s ease;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.service-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 40%;
-  background: linear-gradient(to bottom, var(--azul-tecnologico), rgba(2, 136, 209, 0.1));
-  transition: all 0.3s ease;
-  z-index: -1;
-}
-
-.service-card:hover {
+.project-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(145deg, rgba(55, 71, 79, 0.3), rgba(38, 50, 56, 0.3));
   border-color: rgba(255, 255, 255, 0.08);
 }
 
-.service-card:hover::before {
-  height: 100%;
-  width: 6px;
-}
-
-.service-icon {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 60px;
-  height: 60px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, rgba(2, 136, 209, 0.15), rgba(0, 188, 212, 0.15));
-  margin-bottom: 1.5rem;
+/* Imagen del proyecto */
+.project-image {
   position: relative;
+  height: 220px;
   overflow: hidden;
 }
 
-.service-icon::after {
-  content: '';
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.1);
+}
+
+.image-overlay {
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    circle,
-    rgba(0, 188, 212, 0.1) 0%,
-    rgba(0, 188, 212, 0) 70%
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    0deg,
+    rgba(38, 50, 56, 0.8) 0%,
+    rgba(38, 50, 56, 0.2) 100%
   );
-  opacity: 0;
-  transform: scale(0.5);
-  transition: all 0.5s ease;
 }
 
-.service-card:hover .service-icon::after {
-  opacity: 1;
-  transform: scale(1);
+.project-category {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: rgba(2, 136, 209, 0.8);
+  color: var(--blanco);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 50px;
 }
 
-.service-icon i {
-  font-size: 2rem;
-  color: var(--azul-tecnologico);
-  z-index: 1;
+/* Contenido del proyecto */
+.project-content {
+  padding: 1.8rem;
 }
 
-.service-card h3 {
+.project-content h3 {
   font-family: var(--montserrat);
   font-weight: 700;
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
   color: var(--blanco);
 }
 
-.service-card p {
-  color: var(--gris-claro);
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-  font-size: 1rem;
-}
-
-.service-features {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1.5rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-}
-
-.service-features li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
+.project-description {
   color: var(--gris-claro);
   font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
 }
 
-.service-features li i {
-  color: var(--cian-innovacion);
-  font-size: 1.2rem;
-  margin-top: 2px;
+.project-result {
+  background-color: rgba(2, 136, 209, 0.1);
+  border-left: 3px solid var(--azul-tecnologico);
+  padding: 1rem;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 1.5rem;
 }
 
-.service-link {
+.result-label {
+  font-weight: 700;
+  color: var(--azul-tecnologico);
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.project-result p {
+  color: var(--gris-claro);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.btn-view-project {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -252,29 +269,28 @@
   color: var(--azul-tecnologico);
   text-decoration: none;
   transition: all 0.2s ease;
-  margin-top: 0.5rem;
 }
 
-.service-link i {
+.btn-view-project i {
   transition: transform 0.2s ease;
 }
 
-.service-link:hover {
+.btn-view-project:hover {
   color: var(--cian-innovacion);
 }
 
-.service-link:hover i {
+.btn-view-project:hover i {
   transform: translateX(5px);
 }
 
-/* CTA de servicios */
-.services-cta {
+/* CTA Proyectos */
+.projects-cta {
   display: flex;
   justify-content: center;
   margin-top: 3rem;
 }
 
-.btn-all-services {
+.btn-all-projects {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -289,16 +305,16 @@
   transition: all 0.3s ease;
 }
 
-.btn-all-services i {
+.btn-all-projects i {
   transition: transform 0.2s ease;
 }
 
-.btn-all-services:hover {
+.btn-all-projects:hover {
   background-color: rgba(2, 136, 209, 0.1);
   border-color: var(--azul-tecnologico);
 }
 
-.btn-all-services:hover i {
+.btn-all-projects:hover i {
   transform: translateX(4px);
 }
 
@@ -314,7 +330,7 @@
 
 /* Media Queries */
 @media (min-width: 640px) {
-  .services-grid {
+  .projects-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
@@ -322,11 +338,16 @@
   .section-header h2 {
     font-size: 2.5rem;
   }
+  
+  .filter-btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
 }
 
 @media (min-width: 1024px) {
-  .services-grid {
-    grid-template-columns: repeat(4, 1fr);
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
     gap: 2.5rem;
   }
   
@@ -338,13 +359,29 @@
     font-size: 1.2rem;
   }
   
-  .services-cta {
+  .projects-filter {
+    margin-bottom: 4rem;
+  }
+  
+  .projects-cta {
     margin-top: 4rem;
+  }
+  
+  .project-image {
+    height: 240px;
+  }
+  
+  .project-content {
+    padding: 2rem;
+  }
+  
+  .project-content h3 {
+    font-size: 1.4rem;
   }
 }
 
 @media (min-width: 1280px) {
-  .services {
+  .projects {
     padding: 8rem 0;
   }
   
@@ -352,15 +389,28 @@
     margin-bottom: 5rem;
   }
   
-  .service-card {
-    padding: 3rem 2.5rem;
+  .projects-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
   
-  .service-card h3 {
+  .project-content h3 {
     font-size: 1.5rem;
   }
   
-  .service-card p {
-    font-size: 1.05rem;
+  .project-description,
+  .project-result p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1023px) and (min-width: 640px) {
+  .projects-grid .project-card:nth-child(n+5) {
+    display: none;
+  }
+}
+
+@media (max-width: 639px) {
+  .projects-grid .project-card:nth-child(n+4) {
+    display: none;
   }
 }

@@ -1,11 +1,12 @@
 ---
-// Importar estilos específicos para este componente
+// HeroSection.astro - Sección hero mejorada
 import '../../styles/components/home/hero.css';
 ---
 
-<section class="hero">
+<section class="hero" id="inicio">
   <div class="container">
     <div class="content">
+      <!-- Líneas de fondo animadas -->
       <div class="background-lines">
         <div
           class="line line-1"
@@ -17,41 +18,52 @@ import '../../styles/components/home/hero.css';
           class="line line-2"
           data-aos="fade-up"
           data-aos-duration="1000"
-          data-aos-delay="400"
+          data-aos-delay="300"
         ></div>
         <div
           class="line line-3"
           data-aos="fade-down"
           data-aos-duration="1000"
-          data-aos-delay="600"
+          data-aos-delay="400"
         ></div>
         <div
           class="line line-4"
           data-aos="fade-up"
           data-aos-duration="1000"
-          data-aos-delay="400"
+          data-aos-delay="500"
         ></div>
         <div
           class="line line-5"
-          data-aos="fade-up"
+          data-aos="fade-down"
           data-aos-duration="1000"
-          data-aos-delay="200"
+          data-aos-delay="600"
         ></div>
       </div>
 
+      <!-- Partículas animadas que representan la fusión entre ingeniería y tecnología -->
+      <div class="particles-container">
+        <div class="particle particle-1"></div>
+        <div class="particle particle-2"></div>
+        <div class="particle particle-3"></div>
+        <div class="particle particle-4"></div>
+        <div class="particle particle-5"></div>
+        <div class="particle particle-6"></div>
+      </div>
+      
+      <!-- Contenido principal -->
       <div class="main">
         <h2
           data-aos="fade-down"
           data-aos-duration="1000"
-          data-aos-delay="400"
+          data-aos-delay="200"
         >
-          SOLUCIONES INTEGRADAS DE INGENIERÍA
+          CONSTRUCCIÓN, ARQUITECTURA, INGENIERÍA Y TECNOLOGÍA
         </h2>
         
         <h1
           data-aos="fade-up"
           data-aos-duration="1000"
-          data-aos-delay="200"
+          data-aos-delay="300"
         >
           Ingeniería Multidisciplinaria
         </h1>
@@ -59,56 +71,98 @@ import '../../styles/components/home/hero.css';
         <h1 class="highlight"
           data-aos="fade-up"
           data-aos-duration="1000"
-          data-aos-delay="250"
+          data-aos-delay="400"
         >
           para Proyectos de Vanguardia
         </h1>
         
-        <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+        <p 
+          data-aos="fade-up" 
+          data-aos-duration="1000" 
+          data-aos-delay="500"
+        >
           Firma consultora especializada en servicios integrados de ingeniería civil, 
-          mecatrónica y empresarial, ofreciendo soluciones innovadoras para proyectos 
-          de construcción, automatización y optimización de procesos.
+          mecatrónica y empresarial, que ofrece soluciones innovadoras para cada etapa 
+          de tu proyecto.
         </p>
         
-        <div
-          class="hero-form"
+        <div class="cta-buttons"
           data-aos="fade-up"
           data-aos-duration="1000"
           data-aos-delay="600"
         >
-          <input type="email" placeholder="Ingresa tu correo para recibir información..." />
-          <button>Solicitar Consulta</button>
+          <a href="#contacto" class="cta-primary">Consulta con nuestros expertos</a>
+          <a href="#servicios" class="cta-secondary">Conoce nuestros servicios</a>
         </div>
       </div>
 
+      <!-- Efecto de luz en parte inferior -->
       <div class="hero-light"></div>
+      
+      <!-- Elemento decorativo con proyecto arquitectónico -->
+      <div class="hero-building">
+        <div class="building-overlay"></div>
+      </div>
     </div>
   </div>
 </section>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Efectos de parallax para el hero
-    window.addEventListener("mousemove", (e: MouseEvent) => {
+    // Cachear elementos DOM con tipos correctos
+    const heroLight = document.querySelector(".hero .hero-light") as HTMLElement;
+    const particles = Array.from(document.querySelectorAll(".hero .particle")) as HTMLElement[];
+    const heroBuilding = document.querySelector(".hero .hero-building") as HTMLElement;
+    const lines = Array.from(document.querySelectorAll(".hero .background-lines .line")) as HTMLElement[];
+
+    // Función principal de animación
+    const handleMouseMove = (e: MouseEvent): void => {
       const mouseX = e.clientX / window.innerWidth;
       const mouseY = e.clientY / window.innerHeight;
       
-      const heroLight = document.querySelector(".hero .hero-light") as HTMLElement | null;
-      
+      // Efecto de luz
       if (heroLight) {
         heroLight.style.transform = `translate(${mouseX * 20}px, ${mouseY * 20}px)`;
       }
       
-      // Movimiento sutil de las líneas de fondo
-      const lines = document.querySelectorAll<HTMLElement>(".hero .background-lines .line");
-      if (lines && lines.length > 0) {
-        lines.forEach((line, index) => {
-          const movement = (index % 2 === 0) ? 1 : -1;
-          if (line) {
-            line.style.transform = `translateX(${mouseX * 10 * movement}px)`;
-          }
-        });
+      // Efecto edificio
+      if (heroBuilding) {
+        heroBuilding.style.transform = `translate(${mouseX * -15}px, ${mouseY * -15}px)`;
       }
+      
+      // Movimiento de las partículas
+      particles.forEach((particle, index) => {
+        const speed = (index % 3 + 1) * 2;
+        const directionX = index % 2 === 0 ? 1 : -1;
+        const directionY = index % 2 === 0 ? -1 : 1;
+        
+        particle.style.transform = `translate(${mouseX * speed * directionX * 20}px, ${mouseY * speed * directionY * 20}px)`;
+      });
+      
+      // Movimiento de las líneas de fondo
+      lines.forEach((line, index) => {
+        const movement = (index % 2 === 0) ? 1 : -1;
+        line.style.transform = `translateX(${mouseX * 10 * movement}px)`;
+      });
+    };
+
+    // Agregar evento con throttling para mejor rendimiento
+    let ticking = false;
+    const throttledMouseMove = (e: MouseEvent): void => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleMouseMove(e);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("mousemove", throttledMouseMove);
+
+    // Limpieza del event listener cuando el componente se desmonte
+    document.addEventListener('astro:before-swap', () => {
+      window.removeEventListener('mousemove', throttledMouseMove);
     });
   });
 </script>

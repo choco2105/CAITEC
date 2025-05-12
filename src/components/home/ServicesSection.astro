@@ -1,32 +1,33 @@
 ---
-// Importar estilos específicos para este componente
-import '../../styles/components/services/services.css';
+// ServicesSection.astro - Servicios destacados
+import '../../styles/components/home/services.css';
 ---
 
-<section class="services" id="services">
+<section class="services" id="servicios">
   <div class="container">
     <div class="content">
       <div
-        class="title"
+        class="section-header"
         data-aos="fade-down"
-        data-aos-duration="1000"
-        data-aos-delay="200"
+        data-aos-duration="800"
+        data-aos-delay="100"
       >
-        <div class="title-icon">
-          <img src="/assets/global/services-icon.svg" alt="Servicios CAITEC" />
+        <div class="header-icon">
+          <i class="bx bx-layer"></i>
         </div>
-        <h1>
-          Nuestros Servicios Integrales
-        </h1>
-        <div class="light-1"></div>
-        <div class="light-2"></div>
+        <h2>Servicios Integrales para Cada Etapa</h2>
+        <p class="section-description">
+          Ofrecemos un enfoque multidisciplinario que combina experticia técnica con innovación tecnológica, adaptándonos a las necesidades específicas de cada proyecto.
+        </p>
+        <div class="header-line"></div>
       </div>
 
       <div class="services-grid">
+        <!-- Servicio 1: Ingeniería Civil -->
         <div
           class="service-card"
           data-aos="fade-up"
-          data-aos-duration="1000"
+          data-aos-duration="800"
           data-aos-delay="200"
         >
           <div class="service-icon">
@@ -36,19 +37,20 @@ import '../../styles/components/services/services.css';
           <p>
             Dominamos el modelado BIM y diseñamos infraestructuras capaces de superar los desafíos sísmicos más exigentes.
           </p>
-          <ul class="service-list">
-            <li>Elaboración de expedientes técnicos</li>
-            <li>Modelación BIM (Civil 3D, Revit, Navisworks)</li>
-            <li>Diseño estructural sísmico</li>
-            <li>Supervisión de obras</li>
+          <ul class="service-features">
+            <li><i class="bx bx-check"></i> Elaboración de expedientes técnicos</li>
+            <li><i class="bx bx-check"></i> Modelación BIM (Civil 3D, Revit)</li>
+            <li><i class="bx bx-check"></i> Valorización y liquidación de obras</li>
+            <li><i class="bx bx-check"></i> Estudios de riesgo sísmico</li>
           </ul>
-          <a href="/servicios/ingenieria-civil" class="service-link">Más información <i class="bx bx-right-arrow-alt"></i></a>
+          <a href="/servicios/ingenieria-civil" class="service-link">Conocer más <i class="bx bx-right-arrow-alt"></i></a>
         </div>
 
+        <!-- Servicio 2: Tecnología e Ingeniería Mecatrónica -->
         <div
           class="service-card"
           data-aos="fade-up"
-          data-aos-duration="1000"
+          data-aos-duration="800"
           data-aos-delay="300"
         >
           <div class="service-icon">
@@ -58,19 +60,20 @@ import '../../styles/components/services/services.css';
           <p>
             Creamos sistemas robóticos y redes de sensores que convierten un simple proyecto en una obra 'inteligente', reduciendo tiempos y costos.
           </p>
-          <ul class="service-list">
-            <li>Automatización industrial</li>
-            <li>Diseño de sistemas embebidos</li>
-            <li>Implementación de redes IoT</li>
-            <li>Sistemas de monitoreo remoto</li>
+          <ul class="service-features">
+            <li><i class="bx bx-check"></i> Desarrollo de sistemas robóticos</li>
+            <li><i class="bx bx-check"></i> Soluciones IoT y domótica</li>
+            <li><i class="bx bx-check"></i> Automatización de operaciones</li>
+            <li><i class="bx bx-check"></i> IA para monitoreo y control</li>
           </ul>
-          <a href="/servicios/mecatronica" class="service-link">Más información <i class="bx bx-right-arrow-alt"></i></a>
+          <a href="/servicios/mecatronica" class="service-link">Conocer más <i class="bx bx-right-arrow-alt"></i></a>
         </div>
 
+        <!-- Servicio 3: Consultoría Empresarial -->
         <div
           class="service-card"
           data-aos="fade-up"
-          data-aos-duration="1000"
+          data-aos-duration="800"
           data-aos-delay="400"
         >
           <div class="service-icon">
@@ -80,19 +83,20 @@ import '../../styles/components/services/services.css';
           <p>
             Implementamos metodologías ágiles y mejores prácticas para que cada etapa avance sin fricción, garantizando calidad y transparencia.
           </p>
-          <ul class="service-list">
-            <li>Gestión de proyectos (metodologías ágiles)</li>
-            <li>Optimización de procesos empresariales</li>
-            <li>Planificación estratégica</li>
-            <li>Transformación digital</li>
+          <ul class="service-features">
+            <li><i class="bx bx-check"></i> Metodologías ágiles en construcción</li>
+            <li><i class="bx bx-check"></i> Modelos de contratación y licitaciones</li>
+            <li><i class="bx bx-check"></i> Optimización de procesos</li>
+            <li><i class="bx bx-check"></i> Supervisión y monitoreo continuo</li>
           </ul>
-          <a href="/servicios/consultoria-empresarial" class="service-link">Más información <i class="bx bx-right-arrow-alt"></i></a>
+          <a href="/servicios/consultoria" class="service-link">Conocer más <i class="bx bx-right-arrow-alt"></i></a>
         </div>
 
+        <!-- Servicio 4: Servicios Geoespaciales -->
         <div
           class="service-card"
           data-aos="fade-up"
-          data-aos-duration="1000"
+          data-aos-duration="800"
           data-aos-delay="500"
         >
           <div class="service-icon">
@@ -102,19 +106,19 @@ import '../../styles/components/services/services.css';
           <p>
             Con ArcGIS y QGIS planificamos el territorio, diseñamos cartografías digitales y abrimos el camino hacia la construcción verde.
           </p>
-          <ul class="service-list">
-            <li>Análisis geoespacial y territorial</li>
-            <li>Estudios de impacto ambiental</li>
-            <li>Diseño de infraestructura sostenible</li>
-            <li>Certificaciones LEED</li>
+          <ul class="service-features">
+            <li><i class="bx bx-check"></i> Sistemas de georreferencia</li>
+            <li><i class="bx bx-check"></i> Análisis para impacto ambiental</li>
+            <li><i class="bx bx-check"></i> Cartografía digital especializada</li>
+            <li><i class="bx bx-check"></i> Estudios para planeamiento urbano</li>
           </ul>
-          <a href="/servicios/geoespacial-sostenibilidad" class="service-link">Más información <i class="bx bx-right-arrow-alt"></i></a>
+          <a href="/servicios/geoespacial" class="service-link">Conocer más <i class="bx bx-right-arrow-alt"></i></a>
         </div>
       </div>
       
       <div class="services-cta">
-        <a href="/servicios" class="btn-servicios">
-          <span>Ver Todos Nuestros Servicios</span>
+        <a href="/servicios" class="btn-all-services">
+          <span>Ver todos nuestros servicios</span>
           <i class="bx bx-chevron-right"></i>
         </a>
       </div>

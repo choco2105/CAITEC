@@ -1,15 +1,15 @@
 ---
-// Importar estilos específicos para este componente
+// Header.astro - Componente de navegación principal mejorado
 import '../../styles/components/global/header.css';
 ---
 
-<header data-aos="fade-down" data-aos-duration="1000" data-aos-delay="200">
+<header data-aos="fade-down" data-aos-duration="800" data-aos-delay="100">
   <div class="container">
     <div class="content">
       <div 
         data-aos="fade-down-right"
-        data-aos-duration="1000"
-        data-aos-delay="300"
+        data-aos-duration="800"
+        data-aos-delay="200"
         class="logo"
       >
         <img src="/assets/global/logo.svg" alt="CAITEC" />
@@ -21,28 +21,28 @@ import '../../styles/components/global/header.css';
         
         <!-- Megamenú Servicios -->
         <div class="megamenu-container">
-          <a href="#" class="megamenu-trigger">Servicios <i class="bx bx-chevron-down"></i></a>
+          <a href="#servicios" class="megamenu-trigger">Servicios <i class="bx bx-chevron-down"></i></a>
           <div class="megamenu">
             <div class="megamenu-grid">
-              <!-- Columna: Ingeniería -->
+              <!-- Columna: Ingeniería Civil -->
               <div class="megamenu-column">
                 <h3>Ingeniería Civil</h3>
                 <ul>
                   <li><a href="/servicios/expedientes-tecnicos">Expedientes Técnicos</a></li>
                   <li><a href="/servicios/modelacion-bim">Modelación BIM</a></li>
                   <li><a href="/servicios/obras-publicas">Obras Públicas</a></li>
-                  <li><a href="/servicios/revision-proyectos">Revisión de Proyectos</a></li>
+                  <li><a href="/servicios/riesgo-sismico">Estudios de Riesgo Sísmico</a></li>
                 </ul>
               </div>
               
               <!-- Columna: Mecatrónica -->
               <div class="megamenu-column">
-                <h3>Mecatrónica</h3>
+                <h3>Tecnología e Ingeniería Mecatrónica</h3>
                 <ul>
-                  <li><a href="/servicios/automatizacion">Automatización Industrial</a></li>
-                  <li><a href="/servicios/integracion-iot">Integración IoT</a></li>
-                  <li><a href="/servicios/sistemas-control">Sistemas de Control</a></li>
-                  <li><a href="/servicios/robotica">Robótica Especializada</a></li>
+                  <li><a href="/servicios/automatizacion">Sistemas Robóticos</a></li>
+                  <li><a href="/servicios/iot">Soluciones IoT</a></li>
+                  <li><a href="/servicios/domotica">Domótica</a></li>
+                  <li><a href="/servicios/inteligencia-artificial">IA para Proyectos</a></li>
                 </ul>
               </div>
               
@@ -50,44 +50,40 @@ import '../../styles/components/global/header.css';
               <div class="megamenu-column">
                 <h3>Consultoría Empresarial</h3>
                 <ul>
+                  <li><a href="/servicios/metodologias-agiles">Metodologías Ágiles</a></li>
                   <li><a href="/servicios/optimizacion-procesos">Optimización de Procesos</a></li>
-                  <li><a href="/servicios/gestion-proyectos">Gestión de Proyectos</a></li>
-                  <li><a href="/servicios/innovacion-corporativa">Innovación Corporativa</a></li>
-                  <li><a href="/servicios/transformacion-digital">Transformación Digital</a></li>
+                  <li><a href="/servicios/modelos-contratacion">Modelos de Contratación</a></li>
+                  <li><a href="/servicios/supervision">Supervisión y Monitoreo</a></li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
         
-        <!-- Menú Proyectos -->
-        <a href="/proyectos">Proyectos</a>
-        
-        <!-- Menú Nosotros -->
-        <a href="/nosotros">Nosotros</a>
-        
-        <!-- Menú Contacto -->
-        <a href="/contacto">Contacto</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#sectores">Sectores</a>
+        <a href="#contacto">Contacto</a>
       </nav>
 
       <div class="extra-nav">
         <a 
-          href="/contacto"
+          href="#contacto"
           data-aos="fade-down-left"
-          data-aos-duration="1000"
-          data-aos-delay="400"
+          data-aos-duration="800"
+          data-aos-delay="300"
           class="cta-button"
         >
           SOLICITAR CONSULTA
         </a>
 
-        <button class="btn-menu" id="btn-menu">
+        <button class="btn-menu" id="btn-menu" aria-label="Menú">
           <i class="bx bx-menu-alt-right icon"></i>
         </button>
       </div>
 
       <div class="mobile-nav">
-        <button class="close-mobile-nav">
+        <button class="close-mobile-nav" aria-label="Cerrar menú">
           <i class="bx bx-x icon"></i>
         </button>
         <div class="nav">
@@ -104,33 +100,34 @@ import '../../styles/components/global/header.css';
               <a href="/servicios/expedientes-tecnicos">Expedientes Técnicos</a>
               <a href="/servicios/modelacion-bim">Modelación BIM</a>
               <a href="/servicios/obras-publicas">Obras Públicas</a>
-              <a href="/servicios/revision-proyectos">Revisión de Proyectos</a>
+              <a href="/servicios/riesgo-sismico">Estudios de Riesgo Sísmico</a>
               
-              <h4>Mecatrónica</h4>
-              <a href="/servicios/automatizacion">Automatización Industrial</a>
-              <a href="/servicios/integracion-iot">Integración IoT</a>
-              <a href="/servicios/sistemas-control">Sistemas de Control</a>
-              <a href="/servicios/robotica">Robótica Especializada</a>
+              <h4>Tecnología e Ingeniería Mecatrónica</h4>
+              <a href="/servicios/automatizacion">Sistemas Robóticos</a>
+              <a href="/servicios/iot">Soluciones IoT</a>
+              <a href="/servicios/domotica">Domótica</a>
+              <a href="/servicios/inteligencia-artificial">IA para Proyectos</a>
               
               <h4>Consultoría Empresarial</h4>
+              <a href="/servicios/metodologias-agiles">Metodologías Ágiles</a>
               <a href="/servicios/optimizacion-procesos">Optimización de Procesos</a>
-              <a href="/servicios/gestion-proyectos">Gestión de Proyectos</a>
-              <a href="/servicios/innovacion-corporativa">Innovación Corporativa</a>
-              <a href="/servicios/transformacion-digital">Transformación Digital</a>
+              <a href="/servicios/modelos-contratacion">Modelos de Contratación</a>
+              <a href="/servicios/supervision">Supervisión y Monitoreo</a>
             </div>
           </div>
           
-          <a href="/proyectos">Proyectos</a>
-          <a href="/nosotros">Nosotros</a>
-          <a href="/contacto">Contacto</a>
-          <a href="/contacto" class="mobile-cta-btn">SOLICITAR CONSULTA</a>
+          <a href="#proyectos">Proyectos</a>
+          <a href="#nosotros">Nosotros</a>
+          <a href="#sectores">Sectores</a>
+          <a href="#contacto">Contacto</a>
+          <a href="#contacto" class="mobile-cta-btn">SOLICITAR CONSULTA</a>
         </div>
       </div>
     </div>
   </div>
 </header>
 
-<a href="#" class="to-top"><i class="bx bx-chevron-up"></i></a>
+<a href="#" class="to-top" aria-label="Volver arriba"><i class="bx bx-chevron-up"></i></a>
 
 <script>
   // Este es un script que se ejecutará en el cliente

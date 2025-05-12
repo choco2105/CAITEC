@@ -1,61 +1,155 @@
 ---
-// Importar estilos específicos para este componente
+// AboutSection.astro - Sección Sobre Nosotros mejorada
 import '../../styles/components/home/about.css';
 ---
 
-<section class="about" id="about">
+<section class="about" id="nosotros">
   <div class="container">
     <div class="content">
       <div
-        class="title"
+        class="section-header"
         data-aos="fade-down"
-        data-aos-duration="1000"
-        data-aos-delay="200"
+        data-aos-duration="800"
+        data-aos-delay="100"
       >
-        <h1>Sobre CAITEC</h1>
-        <div class="light-1"></div>
-        <div class="light-2"></div>
+        <div class="header-icon">
+          <i class="bx bx-buildings"></i>
+        </div>
+        <h2>Innovando en Ingeniería Integral</h2>
+        <p class="section-description">
+          CAITEC es una firma consultora multidisciplinaria que combina Ingeniería Civil, Mecatrónica, Tecnología y Consultoría Empresarial para brindar soluciones a medida.
+        </p>
+        <div class="header-line"></div>
       </div>
 
-      <div class="row">
-        <div
-          class="box"
+      <div class="about-grid">
+        <!-- Columna Quiénes Somos -->
+        <div 
+          class="about-column history"
           data-aos="fade-right"
-          data-aos-duration="1000"
-          data-aos-delay="400"
+          data-aos-duration="800"
+          data-aos-delay="200"
         >
-          <div class="box-light"></div>
-          <h2><span>Firma consultora</span> multidisciplinaria</h2>
-          <p>
-            Fundada en 2025 en el corazón de Lima, CAITEC es una firma que combina Ingeniería Civil, Mecatrónica y Consultoría Empresarial bajo un mismo techo. Desde nuestra sede de Jr. Chota 1454, acompañamos a nuestros clientes en cada paso del proyecto —desde el plano conceptual hasta la entrega llave en mano— con soluciones personalizadas.
-          </p>
-          <button><span>Nuestra Historia</span></button>
+          <div class="about-card">
+            <div class="card-highlight"></div>
+            <h3>Nuestra Historia</h3>
+            <p>
+              A principios de 2025, en el corazón de Lima, un grupo de jóvenes ingenieros visionarios unió fuerzas para cambiar las reglas del juego en el mundo de la construcción y la innovación tecnológica.
+            </p>
+            <p>
+              Así nació CAITEC: la primera firma que combina Ingeniería Civil, Mecatrónica, Tecnología y Consultoría Empresarial bajo un mismo techo. Desde el primer día en nuestra sede de Jr. Chota 1454, supimos que no queríamos ser un proveedor más.
+            </p>
+            <p>
+              Queríamos ser aliados estratégicos de nuestros clientes, acompañándolos en cada paso —desde el plano conceptual hasta la entrega llave en mano— con soluciones a medida.
+            </p>
+          </div>
         </div>
-
-        <div
-          class="light-area"
-          data-aos="zoom-in"
-          data-aos-duration="1000"
-          data-aos-delay="600"
+        
+        <!-- Columna Misión y Visión -->
+        <div 
+          class="about-column mission-vision"
+          data-aos="fade-up"
+          data-aos-duration="800"
+          data-aos-delay="300"
         >
-          <div class="light-1"></div>
-          <div class="light-2"></div>
+          <div class="about-card mission">
+            <div class="card-highlight"></div>
+            <h3>Nuestra Misión</h3>
+            <p>
+              Brindar servicios de construcción, supervisión y gestión de proyectos con un enfoque técnico, eficiente y tecnológicamente innovador, generando valor a nuestros clientes, colaboradores y la sociedad.
+            </p>
+          </div>
+          
+          <div class="about-card vision">
+            <div class="card-highlight"></div>
+            <h3>Nuestra Visión</h3>
+            <p>
+              Ser una empresa referente en soluciones integrales de ingeniería y construcción en el Perú, destacando por la innovación tecnológica, la calidad técnica y la eficiencia en la gestión de proyectos.
+            </p>
+          </div>
         </div>
-
-        <div
-          class="box"
+        
+        <!-- Columna Valores -->
+        <div 
+          class="about-column values"
           data-aos="fade-left"
-          data-aos-duration="1000"
+          data-aos-duration="800"
           data-aos-delay="400"
         >
-          <div class="box-light"></div>
-          <h2><span>Misión y</span> valores</h2>
-          <p>
-            Nuestra misión es brindar soluciones de ingeniería integradas que optimicen recursos, mejoren procesos y garanticen la calidad de cada proyecto. Nos distinguimos por la innovación, excelencia técnica, enfoque multidisciplinario y compromiso con la sostenibilidad en todo lo que hacemos.
-          </p>
-          <button><span>Conoce Más</span></button>
+          <div class="about-card">
+            <div class="card-highlight"></div>
+            <h3>Nuestros Valores</h3>
+            
+            <div class="values-grid">
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="bx bx-bulb"></i>
+                </div>
+                <div class="value-content">
+                  <h4>Innovación</h4>
+                  <p>Aplicamos tecnologías emergentes para mejorar procesos tradicionales</p>
+                </div>
+              </div>
+              
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="bx bx-detail"></i>
+                </div>
+                <div class="value-content">
+                  <h4>Precisión</h4>
+                  <p>Trabajamos con exactitud y rigurosidad técnica en cada proyecto</p>
+                </div>
+              </div>
+              
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="bx bx-leaf"></i>
+                </div>
+                <div class="value-content">
+                  <h4>Sostenibilidad</h4>
+                  <p>Promovemos prácticas que respetan el medio ambiente y optimizan recursos</p>
+                </div>
+              </div>
+              
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="bx bx-group"></i>
+                </div>
+                <div class="value-content">
+                  <h4>Colaboración</h4>
+                  <p>Fomentamos el trabajo interdisciplinario para soluciones integrales</p>
+                </div>
+              </div>
+              
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="bx bx-medal"></i>
+                </div>
+                <div class="value-content">
+                  <h4>Excelencia</h4>
+                  <p>Buscamos constantemente superar estándares y expectativas</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      
+      <div 
+        class="about-cta"
+        data-aos="fade-up"
+        data-aos-duration="800"
+        data-aos-delay="500"
+      >
+        <a href="/nosotros" class="btn-about">
+          <span>Conoce más sobre CAITEC</span>
+          <i class="bx bx-chevron-right"></i>
+        </a>
       </div>
     </div>
   </div>
+  
+  <!-- Elementos decorativos de fondo -->
+  <div class="about-bg-element element-1"></div>
+  <div class="about-bg-element element-2"></div>
 </section>
