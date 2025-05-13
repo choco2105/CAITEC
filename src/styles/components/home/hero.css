@@ -1,4 +1,5 @@
-/* hero.css - Estilos mejorados para la sección Hero con efectos impactantes */
+/* src/styles/components/home/hero.css */
+/* Estilos mejorados para la sección Hero con efectos impactantes */
 
 .hero {
   min-height: 100vh;
@@ -9,11 +10,11 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: 100px 0;
+  padding: 120px 0 80px;
   z-index: 1;
 }
 
-/* Efecto de patrón de fondo y grilla */
+/* Efecto de patrón de fondo avanzado */
 .hero::before {
   content: "";
   position: absolute;
@@ -27,45 +28,48 @@
   background-size: 50px 50px;
   background-position: center center;
   z-index: -1;
+  animation: fadeIn 2s ease-out forwards;
 }
 
-/* Efecto de partículas */
-.hero-particles {
+/* Contenedor de partículas */
+.particles-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
+  pointer-events: none;
   z-index: 0;
 }
 
+/* Partículas individuales con animaciones distintas */
 .particle {
   position: absolute;
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: var(--azul-principal);
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.particle:nth-child(odd) {
-  background: var(--turquesa);
+  opacity: 0.3;
+  filter: blur(1px);
+  box-shadow: 0 0 10px var(--azul-principal);
 }
 
 .particle-1 {
-  top: 10%;
+  top: 15%;
   left: 10%;
-  animation: floatParticle 20s infinite ease-in-out;
+  width: 8px;
+  height: 8px;
+  animation: particleFloat 18s infinite ease-in-out;
 }
 
 .particle-2 {
-  top: 20%;
+  top: 25%;
   left: 80%;
-  width: 8px;
-  height: 8px;
-  animation: floatParticle 25s infinite ease-in-out reverse;
+  width: 12px;
+  height: 12px;
+  background: var(--turquesa);
+  animation: particleFloat 24s infinite ease-in-out reverse;
 }
 
 .particle-3 {
@@ -73,159 +77,190 @@
   left: 30%;
   width: 10px;
   height: 10px;
-  animation: floatParticle 22s infinite ease-in-out 2s;
+  background: var(--verde-sostenible);
+  animation: particleFloat 20s infinite ease-in-out 1s;
 }
 
 .particle-4 {
-  top: 80%;
+  top: 40%;
   left: 70%;
-  animation: floatParticle 18s infinite ease-in-out 1s;
+  animation: particleFloat 22s infinite ease-in-out 2s;
 }
 
 .particle-5 {
-  top: 40%;
-  left: 50%;
-  width: 7px;
-  height: 7px;
-  animation: floatParticle 23s infinite ease-in-out 3s;
+  top: 75%;
+  left: 20%;
+  width: 9px;
+  height: 9px;
+  background: var(--turquesa);
+  animation: particleFloat 19s infinite ease-in-out 3s;
 }
 
 .particle-6 {
-  top: 75%;
-  left: 15%;
-  width: 9px;
-  height: 9px;
-  animation: floatParticle 19s infinite ease-in-out 2.5s;
+  top: 30%;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  animation: particleFloat 21s infinite ease-in-out 1.5s;
 }
 
-@keyframes floatParticle {
+@keyframes particleFloat {
   0%, 100% {
-    transform: translate(0, 0);
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
   }
   25% {
-    transform: translate(50px, 40px);
+    transform: translate(50px, 40px) scale(1.1);
+    opacity: 0.5;
   }
   50% {
-    transform: translate(0, 80px);
+    transform: translate(10px, 80px) scale(0.9);
+    opacity: 0.7;
   }
   75% {
-    transform: translate(-50px, 40px);
+    transform: translate(-40px, 30px) scale(1.2);
+    opacity: 0.4;
   }
 }
 
-/* Líneas dinámicas */
-.hero-lines {
+/* Líneas dinámicas de fondo */
+.background-lines {
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: 0;
+  opacity: 0.5;
 }
 
-.hero-line {
+.line {
   position: absolute;
   height: 100%;
   width: 1px;
-  background: rgba(255, 255, 255, 0.03);
+  background: linear-gradient(to bottom, 
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.05) 15%, 
+    rgba(255, 255, 255, 0.05) 85%,
+    rgba(255, 255, 255, 0) 100%);
+  opacity: 0;
+  animation: fadeIn 1.5s ease-out forwards;
 }
 
-.hero-line-1 {
+.line-1 {
   left: 20%;
+  animation-delay: 0.2s;
 }
 
-.hero-line-2 {
+.line-2 {
   left: 40%;
+  animation-delay: 0.4s;
 }
 
-.hero-line-3 {
+.line-3 {
   left: 60%;
+  animation-delay: 0.6s;
 }
 
-.hero-line-4 {
+.line-4 {
   left: 80%;
+  animation-delay: 0.8s;
 }
 
-.hero-line-glow {
+.line-5 {
+  left: 10%;
+  animation-delay: 1s;
+}
+
+/* Efecto de luz en parte inferior */
+.hero-light {
   position: absolute;
-  width: 1px;
-  background: var(--azul-principal);
-  box-shadow: 0 0 10px var(--azul-principal), 0 0 20px var(--azul-principal);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 180px;
+  background: radial-gradient(ellipse at center, 
+    rgba(2, 136, 209, 0.2) 0%, 
+    rgba(0, 0, 0, 0) 70%);
+  filter: blur(40px);
   opacity: 0.6;
-  z-index: 1;
+  z-index: 0;
+  animation: pulseLight 6s infinite ease-in-out alternate;
 }
 
-.hero-line-1 .hero-line-glow {
-  height: 30%;
-  top: 0;
-  animation: lineFlowDown 10s infinite ease-in-out;
-}
-
-.hero-line-2 .hero-line-glow {
-  height: 40%;
-  bottom: 0;
-  animation: lineFlowUp 12s infinite ease-in-out 2s;
-}
-
-.hero-line-3 .hero-line-glow {
-  height: 35%;
-  top: 0;
-  animation: lineFlowDown 11s infinite ease-in-out 1s;
-}
-
-.hero-line-4 .hero-line-glow {
-  height: 45%;
-  bottom: 0;
-  animation: lineFlowUp 13s infinite ease-in-out 3s;
-}
-
-@keyframes lineFlowDown {
+@keyframes pulseLight {
   0% {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  20%, 80% {
-    opacity: 0.6;
+    opacity: 0.4;
+    filter: blur(40px);
+    width: 60%;
   }
   100% {
-    transform: translateY(450%);
-    opacity: 0;
+    opacity: 0.7;
+    filter: blur(60px);
+    width: 80%;
   }
 }
 
-@keyframes lineFlowUp {
+/* Elemento decorativo con proyecto arquitectónico */
+.hero-building {
+  position: absolute;
+  right: -5%;
+  bottom: 0;
+  width: 50%;
+  height: 90%;
+  background-image: url('/assets/hero/building-overlay.png');
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: contain;
+  opacity: 0.15;
+  z-index: 0;
+  animation: buildingFloat 12s infinite ease-in-out alternate;
+}
+
+@keyframes buildingFloat {
   0% {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  20%, 80% {
-    opacity: 0.6;
+    transform: translateY(0) scale(1);
+    opacity: 0.12;
   }
   100% {
-    transform: translateY(-450%);
-    opacity: 0;
+    transform: translateY(-20px) scale(1.02);
+    opacity: 0.18;
   }
+}
+
+/* Overlay para el edificio con gradiente */
+.building-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(2, 136, 209, 0.1) 100%);
 }
 
 /* Contenido principal */
-.hero-content {
+.main {
   position: relative;
   z-index: 2;
-  max-width: 800px;
+  max-width: 700px;
+  margin-left: 5%;
 }
 
-.hero-subtitle {
+.main h2 {
   color: var(--turquesa);
-  font-size: 1.1rem;
+  font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 3px;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   opacity: 0;
   animation: fadeInUp 0.8s forwards ease-out 0.2s;
 }
 
-.hero-title {
-  font-size: 3.5rem;
+.main h1 {
+  font-size: 3.2rem;
   font-weight: 800;
   line-height: 1.2;
   color: var(--blanco);
@@ -234,8 +269,7 @@
   animation: fadeInUp 0.8s forwards ease-out 0.4s;
 }
 
-.hero-title span {
-  display: block;
+.main h1.highlight {
   background: linear-gradient(90deg, var(--azul-principal), var(--turquesa));
   -webkit-background-clip: text;
   background-clip: text;
@@ -244,11 +278,12 @@
   animation: fadeInUp 0.8s forwards ease-out 0.6s;
 }
 
-.hero-description {
+.main p {
   font-size: 1.1rem;
   color: var(--gris-claro);
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   max-width: 600px;
+  line-height: 1.7;
   opacity: 0;
   animation: fadeInUp 0.8s forwards ease-out 0.8s;
 }
@@ -264,17 +299,26 @@
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* Botones de CTA */
-.hero-cta {
+.cta-buttons {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.2rem;
   margin-top: 2rem;
   opacity: 0;
   animation: fadeInUp 0.8s forwards ease-out 1s;
 }
 
-.hero-cta-primary {
+.cta-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -290,9 +334,10 @@
   box-shadow: 0 5px 15px rgba(2, 136, 209, 0.4);
   position: relative;
   overflow: hidden;
+  text-decoration: none;
 }
 
-.hero-cta-primary::before {
+.cta-primary::before {
   content: '';
   position: absolute;
   top: 0;
@@ -303,16 +348,16 @@
   transition: all 0.6s ease;
 }
 
-.hero-cta-primary:hover {
+.cta-primary:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(2, 136, 209, 0.6);
 }
 
-.hero-cta-primary:hover::before {
+.cta-primary:hover::before {
   left: 100%;
 }
 
-.hero-cta-secondary {
+.cta-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -324,141 +369,51 @@
   font-weight: 600;
   font-size: 1rem;
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
-.hero-cta-secondary:hover {
+.cta-secondary:hover {
   background: rgba(255, 255, 255, 0.05);
   border-color: var(--turquesa);
   transform: translateY(-3px);
 }
 
-/* Elemento decorativo - Imagen de edificio */
-.hero-building {
-  position: absolute;
-  right: -5%;
-  bottom: 0;
-  width: 50%;
-  height: 90%;
-  background-image: url('/assets/hero/building-overlay.png');
-  background-repeat: no-repeat;
-  background-position: bottom right;
-  background-size: contain;
-  opacity: 0.15;
-  z-index: 0;
-  animation: buildingFloat 8s infinite ease-in-out alternate;
-}
-
-@keyframes buildingFloat {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-20px);
-  }
-}
-
-/* Efecto de luz inferior */
-.hero-light {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--azul-principal), transparent);
-  filter: blur(80px);
-  opacity: 0.3;
-  animation: pulsateLight 5s infinite ease-in-out alternate;
-}
-
-@keyframes pulsateLight {
-  0% {
-    opacity: 0.2;
-    width: 50%;
-    filter: blur(50px);
-  }
-  100% {
-    opacity: 0.4;
-    width: 80%;
-    filter: blur(100px);
-  }
-}
-
-/* Scroll indicator */
-.scroll-indicator {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: var(--gris-claro);
-  opacity: 0;
-  animation: fadeIn 1s forwards ease-out 1.5s;
-  z-index: 10;
-}
-
-.scroll-indicator-text {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 0.5rem;
-}
-
-.scroll-indicator-icon {
-  font-size: 1.5rem;
-  animation: scrollBounce 2s infinite;
-}
-
-@keyframes scrollBounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
-  }
-  60% {
-    transform: translateY(-5px);
-  }
-}
-
 /* Media Queries */
 @media (min-width: 768px) {
-  .hero-title {
+  .main h1 {
     font-size: 4rem;
   }
   
-  .hero-cta {
+  .cta-buttons {
     flex-direction: row;
   }
   
-  .hero-content {
-    margin-left: 5%;
+  .main {
+    margin-left: 8%;
   }
 }
 
 @media (min-width: 992px) {
-  .hero-title {
+  .main h1 {
     font-size: 4.5rem;
   }
   
-  .hero-subtitle {
+  .main h2 {
     font-size: 1.2rem;
   }
   
-  .hero-description {
+  .main p {
     font-size: 1.2rem;
   }
   
   .hero-building {
-    opacity: 0.25;
+    opacity: 0.2;
     width: 45%;
   }
 }
 
 @media (min-width: 1200px) {
-  .hero-title {
+  .main h1 {
     font-size: 5rem;
   }
   
@@ -471,18 +426,22 @@
 @media (max-width: 767px) {
   .hero {
     text-align: center;
-    padding: 80px 0;
+    padding: 120px 0 60px;
   }
   
-  .hero-content {
+  .main {
     margin: 0 auto;
   }
   
-  .hero-title {
+  .main h1 {
     font-size: 2.8rem;
   }
   
-  .hero-description {
+  .main h2 {
+    font-size: 0.9rem;
+  }
+  
+  .main p {
     margin-left: auto;
     margin-right: auto;
   }
